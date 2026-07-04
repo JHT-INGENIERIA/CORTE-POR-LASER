@@ -3,33 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="JHT Ingeniería - Soluciones metalmecánicas de precisión. Corte láser CNC, plegado, soldadura y fabricación industrial.">
     <title>JHT Ingeniería | Soluciones Metalmecánicas de Precisión</title>
+    
+    <!-- LIBRERÍA DE ANIMACIONES PROFESIONALES (AOS CSS) -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
     <style>
         /* --- VARIABLES DE COLORES CORPORATIVOS --- */
         :root {
             --primario: #0f4c81;
+            --primario-claro: #1a5fa0;
             --acento: #ff5722;
+            --acento-claro: #ff7043;
             --oscuro: #1b222c;
             --claro: #f4f7f9;
             --blanco: #ffffff;
             --gris-texto: #555555;
+            --gris-claro: #999999;
         }
 
         * { box-sizing: border-box; }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0; padding: 0;
             background-color: var(--claro);
             color: #333;
             scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* --- EFECTO PRELOADER (Carga de Pantalla) --- */
+        #preloader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: linear-gradient(135deg, var(--oscuro) 0%, #0a3657 100%);
+            z-index: 9999;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s;
+        }
+        #preloader.oculto { opacity: 0; visibility: hidden; }
+        
+        .engranaje {
+            font-size: 60px; animation: spin 2s linear infinite; color: var(--acento);
+            text-shadow: 0 0 20px rgba(255, 87, 34, 0.5);
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .preloader-text { 
+            color: var(--blanco); margin-top: 20px; font-weight: bold; 
+            letter-spacing: 3px; font-size: 18px;
         }
 
         /* --- MENÚ DE NAVEGACIÓN --- */
         header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            padding: 25px 50px;
+            padding: 20px 50px;
             box-sizing: border-box;
             display: flex;
             justify-content: space-between;
@@ -40,40 +72,81 @@
         }
 
         header.header-activo {
-            background-color: var(--oscuro);
+            background: linear-gradient(135deg, var(--oscuro) 0%, #0a3657 100%);
             padding: 15px 50px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            border-bottom: 3px solid var(--primario);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border-bottom: 3px solid var(--acento);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
-            color: var(--blanco); font-size: 22px; font-weight: bold; letter-spacing: 1px;
+            color: var(--blanco); 
+            font-size: 24px; 
+            font-weight: 800; 
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
         }
-        .logo span { color: var(--primario); }
-        header.header-activo .logo span { color: #5dade2; }
+        .logo:hover { transform: scale(1.05); }
+        .logo span { color: var(--acento); }
+        header.header-activo .logo span { color: var(--acento-claro); }
 
-        nav { display: flex; gap: 5px; }
+        nav { display: flex; gap: 8px; align-items: center; }
         nav a {
-            color: var(--blanco); text-decoration: none; padding: 8px 16px; font-size: 15px;
-            font-weight: 500; border-radius: 4px; position: relative; transition: all 0.3s ease;
+            color: var(--blanco); 
+            text-decoration: none; 
+            padding: 10px 18px; 
+            font-size: 14px;
+            font-weight: 600; 
+            border-radius: 6px; 
+            position: relative; 
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         nav a::after {
-            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
-            background-color: var(--acento); transition: all 0.3s ease; transform: translateX(-50%);
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 50%; 
+            width: 0; 
+            height: 3px;
+            background: linear-gradient(90deg, var(--acento), var(--acento-claro)); 
+            transition: all 0.3s ease; 
+            transform: translateX(-50%);
+        }
+        nav a:hover {
+            background-color: rgba(255, 87, 34, 0.1);
+            transform: translateY(-2px);
         }
         nav a:hover::after { width: 80%; }
         nav a.active {
-            color: var(--blanco); background-color: var(--primario);
-            box-shadow: 0 2px 10px rgba(15, 76, 129, 0.4);
+            color: var(--blanco); 
+            background: linear-gradient(135deg, var(--primario) 0%, var(--primario-claro) 100%);
+            box-shadow: 0 4px 15px rgba(15, 76, 129, 0.3);
         }
 
         /* --- BOTÓN HAMBURGUESA --- */
         .menu-toggle {
-            display: none; flex-direction: column; justify-content: space-between;
-            width: 30px; height: 22px; background: none; border: none; cursor: pointer; padding: 0; z-index: 1001;
+            display: none; 
+            flex-direction: column; 
+            justify-content: space-between;
+            width: 30px; 
+            height: 22px; 
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            padding: 0; 
+            z-index: 1001;
+            transition: all 0.3s ease;
         }
         .menu-toggle span {
-            display: block; height: 3px; width: 100%; background-color: var(--blanco); border-radius: 2px; transition: all 0.3s ease;
+            display: block; 
+            height: 3px; 
+            width: 100%; 
+            background-color: var(--blanco); 
+            border-radius: 2px; 
+            transition: all 0.3s ease;
         }
         .menu-toggle.abierto span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
         .menu-toggle.abierto span:nth-child(2) { opacity: 0; }
@@ -81,139 +154,838 @@
 
         /* --- SECCIÓN HERO --- */
         .hero {
-            height: 95vh; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; overflow: hidden; color: var(--blanco);
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            position: relative; 
+            overflow: hidden; 
+            color: var(--blanco);
+            margin-top: 70px;
         }
         .hero-bg-media {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            z-index: 1;
+            animation: zoomSlow 20s ease-in-out infinite;
         }
+        @keyframes zoomSlow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        
         .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(27, 34, 44, 0.85), rgba(27, 34, 44, 0.75)); z-index: 2;
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
+            background: linear-gradient(135deg, rgba(27, 34, 44, 0.8) 0%, rgba(15, 76, 129, 0.6) 100%); 
+            z-index: 2;
         }
-        .hero-content { position: relative; z-index: 3; max-width: 900px; padding: 0 20px; }
-        .hero h1 { font-size: 50px; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; letter-spacing: 1px; }
-        .hero .eslogan { font-size: 22px; color: #5dade2; font-style: italic; margin-bottom: 25px; font-weight: 600; }
-        .hero p { font-size: 17px; margin-bottom: 30px; color: #ccc; line-height: 1.6; }
+        .hero-content { 
+            position: relative; 
+            z-index: 3; 
+            max-width: 900px; 
+            padding: 0 20px; 
+            animation: fadeInUp 1s ease-out;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .hero h1 { 
+            font-size: 56px; 
+            margin-bottom: 15px; 
+            text-transform: uppercase; 
+            line-height: 1.2; 
+            letter-spacing: 2px;
+            font-weight: 800;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+        .hero .eslogan { 
+            font-size: 26px; 
+            color: var(--acento-claro); 
+            font-style: italic; 
+            margin-bottom: 20px; 
+            font-weight: 600;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        .hero p { 
+            font-size: 18px; 
+            margin-bottom: 35px; 
+            color: #e0e0e0; 
+            line-height: 1.7;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
         
         .scroll-hint {
-            margin-top: 35px; font-size: 13px; color: #aab7c4; letter-spacing: 1px;
-            text-transform: uppercase; cursor: pointer; animation: rebote 2s infinite;
+            margin-top: 40px; 
+            font-size: 13px; 
+            color: #aab7c4; 
+            letter-spacing: 1px;
+            text-transform: uppercase; 
+            cursor: pointer; 
+            animation: rebote 2s infinite;
+            font-weight: 600;
         }
-        @keyframes rebote { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+        @keyframes rebote { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
 
         .btn-whatsapp {
-            background-color: #25d366; color: var(--blanco); padding: 16px 38px; border-radius: 4px;
-            font-size: 16px; font-weight: bold; text-decoration: none; display: inline-block; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); border: none; cursor: pointer;
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+            color: var(--blanco); 
+            padding: 16px 40px; 
+            border-radius: 6px;
+            font-size: 16px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            display: inline-block; 
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); 
+            border: none; 
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-whatsapp:hover { background-color: #1da851; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5); }
+        .btn-whatsapp::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        .btn-whatsapp:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .btn-whatsapp:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.6); 
+        }
 
         /* --- SECCIONES BASE --- */
-        section { padding: 100px 50px; box-sizing: border-box; }
-        .section-title { font-size: 32px; text-align: center; margin-bottom: 10px; color: var(--oscuro); text-transform: uppercase; letter-spacing: 1px; }
-        .section-subtitle { text-align: center; color: #666; margin-bottom: 60px; font-size: 16px; max-width: 700px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+        section { 
+            padding: 100px 50px; 
+            box-sizing: border-box;
+            position: relative;
+        }
+        .section-title { 
+            font-size: 36px; 
+            text-align: center; 
+            margin-bottom: 15px; 
+            color: var(--oscuro); 
+            text-transform: uppercase; 
+            letter-spacing: 1px;
+            font-weight: 800;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--acento), var(--acento-claro));
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+        .section-title-light { color: var(--blanco); }
+        .section-subtitle { 
+            text-align: center; 
+            color: var(--gris-claro); 
+            margin-bottom: 60px; 
+            font-size: 17px; 
+            max-width: 700px; 
+            margin-left: auto; 
+            margin-right: auto; 
+            line-height: 1.8;
+        }
+        .section-subtitle-light { color: rgba(255, 255, 255, 0.85); }
 
-        /* --- NOSOTROS (INTERACTIVO) --- */
+        /* --- NOSOTROS --- */
         #nosotros { background-color: var(--blanco); }
-        .nosotros-container { max-width: 1200px; margin: 0 auto 50px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .nosotros-box h3 { color: var(--primario); font-size: 22px; margin-bottom: 15px; border-left: 4px solid var(--acento); padding-left: 12px; }
-        .nosotros-box p { line-height: 1.6; color: var(--gris-texto); text-align: justify; margin: 0 0 15px 0; }
+        .nosotros-container { 
+            max-width: 1200px; 
+            margin: 0 auto 60px auto; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 40px; 
+        }
+        .nosotros-box {
+            background: var(--claro);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 5px solid var(--acento);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        .nosotros-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        .nosotros-box h3 { 
+            color: var(--primario); 
+            font-size: 22px; 
+            margin-bottom: 15px; 
+            font-weight: 700;
+        }
+        .nosotros-box p { 
+            line-height: 1.8; 
+            color: var(--gris-texto); 
+            text-align: justify; 
+            margin: 0 0 15px 0;
+        }
 
-        .valores-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; max-width: 1200px; margin: 40px auto 0 auto; }
-        .valor-card { background: var(--claro); padding: 25px; border-radius: 6px; text-align: center; border-bottom: 4px solid var(--primario); cursor: pointer; transition: all 0.3s ease; outline: none; position: relative; }
-        .valor-card:hover { background: #eaf1f7; transform: translateY(-4px); box-shadow: 0 6px 15px rgba(0,0,0,0.05); }
-        .valor-card h4 { margin: 0 0 10px 0; color: var(--oscuro); font-size: 18px; }
-        .valor-card p { margin: 0; font-size: 14.5px; color: #666; line-height: 1.4; }
+        .valores-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 25px; 
+            max-width: 1200px; 
+            margin: 40px auto 0 auto; 
+        }
+        .valor-card { 
+            background: var(--blanco); 
+            padding: 28px; 
+            border-radius: 8px; 
+            border-bottom: 4px solid var(--primario); 
+            cursor: pointer; 
+            transition: all 0.3s ease; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .valor-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 87, 34, 0.1), transparent);
+            transition: left 0.4s ease;
+        }
+        .valor-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            border-bottom-color: var(--acento);
+        }
+        .valor-card:hover::before { left: 100%; }
+        .valor-card h4 { 
+            margin: 0 0 10px 0; 
+            color: var(--oscuro); 
+            font-size: 19px;
+            font-weight: 700;
+        }
+        .valor-card p { 
+            margin: 0; 
+            font-size: 14px; 
+            color: var(--gris-claro); 
+            line-height: 1.5;
+        }
         
-        .valor-detalle { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.35s ease; font-size: 14px; color: var(--primario); text-align: left; margin-top: 0; }
-        .valor-card.expandido .valor-detalle { max-height: 200px; opacity: 1; margin-top: 15px; padding-top: 15px; border-top: 1px dashed #cbd6de; }
-        .valor-card .toggle-icono { display: inline-block; margin-top: 10px; font-size: 18px; color: var(--acento); font-weight: bold; transition: transform 0.3s ease; }
+        .valor-detalle { 
+            max-height: 0; 
+            overflow: hidden; 
+            opacity: 0; 
+            transition: all 0.35s ease; 
+            font-size: 14px; 
+            color: var(--primario); 
+            text-align: left; 
+            margin-top: 0;
+            line-height: 1.7;
+        }
+        .valor-card.expandido .valor-detalle { 
+            max-height: 200px; 
+            opacity: 1; 
+            margin-top: 16px; 
+            padding-top: 16px; 
+            border-top: 2px dashed #cbd6de;
+        }
+        .valor-card .toggle-icono { 
+            display: inline-block; 
+            margin-top: 12px; 
+            font-size: 20px; 
+            color: var(--acento); 
+            font-weight: bold; 
+            transition: transform 0.3s ease; 
+        }
         .valor-card.expandido .toggle-icono { transform: rotate(45deg); }
 
-        /* --- SERVICIOS (INTERACTIVO MULTIMEDIA) --- */
+        /* --- SERVICIOS --- */
         #servicios { background-color: var(--claro); }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .service-card { background-color: var(--blanco); border-radius: 8px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.05); border-top: 4px solid var(--primario); transition: all 0.3s ease; cursor: pointer; }
-        .service-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); 
+            gap: 28px; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        .service-card { 
+            background-color: var(--blanco); 
+            border-radius: 10px; 
+            overflow: hidden; 
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08); 
+            border-top: 5px solid var(--primario); 
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); 
+            cursor: pointer;
+            position: relative;
+        }
+        .service-card:hover { 
+            transform: translateY(-10px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15); 
+        }
         
-        .media-box { width: 100%; height: 220px; background-color: #ddd; overflow: hidden; position: relative; }
-        .service-card img, .service-card video { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.5s ease; }
-        .service-card:hover .media-box img, .service-card:hover .media-box video { transform: scale(1.04); }
+        .media-box { 
+            width: 100%; 
+            height: 240px; 
+            background: linear-gradient(135deg, #e8ecf0 0%, #f4f7f9 100%); 
+            overflow: hidden; 
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+        .service-card img, 
+        .service-card video { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+            display: block; 
+            transition: transform 0.5s ease; 
+        }
+        .service-card:hover .media-box img, 
+        .service-card:hover .media-box video { 
+            transform: scale(1.08); 
+        }
         
         .media-box::after {
-            content: '+ CLIC PARA DETALLES'; position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.75)); color: #fff; font-size: 12px; font-weight: bold; text-align: right; padding: 40px 15px 10px 15px; box-sizing: border-box; letter-spacing: 0.5px; opacity: 0.9; transition: opacity 0.3s ease;
+            content: '+ VER DETALLES'; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 100%; 
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); 
+            color: #fff; 
+            font-size: 12px; 
+            font-weight: bold; 
+            text-align: right; 
+            padding: 45px 15px 12px 15px; 
+            box-sizing: border-box; 
+            letter-spacing: 0.5px; 
+            opacity: 0.9; 
+            transition: all 0.3s ease;
         }
-        .service-card.abierto .media-box::after { content: '− OCULTAR DETALLES'; background: linear-gradient(transparent, rgba(15,76,129,0.85)); }
+        .service-card.abierto .media-box::after { 
+            content: '− OCULTAR'; 
+            background: linear-gradient(transparent, rgba(15, 76, 129, 0.9)); 
+            opacity: 1;
+        }
 
-        .service-card-content { padding: 25px; }
-        .service-card-content h3 { margin: 0 0 10px 0; font-size: 20px; color: var(--oscuro); display: flex; justify-content: space-between; align-items: center; }
-        .service-card-content h3 .flecha { font-size: 14px; color: var(--acento); transition: transform 0.3s ease; }
-        .service-card.abierto .service-card-content h3 .flecha { transform: rotate(180deg); }
-        .service-card-content p { color: #666; font-size: 14px; line-height: 1.5; margin: 0; }
+        .service-card-content { padding: 28px; }
+        .service-card-content h3 { 
+            margin: 0 0 12px 0; 
+            font-size: 20px; 
+            color: var(--oscuro); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            font-weight: 700;
+        }
+        .service-card-content h3 .flecha { 
+            font-size: 14px; 
+            color: var(--acento); 
+            transition: transform 0.3s ease;
+        }
+        .service-card.abierto .service-card-content h3 .flecha { 
+            transform: rotate(180deg); 
+        }
+        .service-card-content p { 
+            color: var(--gris-claro); 
+            font-size: 14px; 
+            line-height: 1.6; 
+            margin: 0;
+        }
 
-        /* Detalles Desplegables Avanzados */
-        .service-detalle { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
-        .service-card.abierto .service-detalle { max-height: 350px; opacity: 1; margin-top: 15px; }
-        .service-detalle-inner { border-top: 1px dashed #d5dde3; padding-top: 15px; }
-        .service-detalle ul { margin: 0 0 15px 0; padding-left: 20px; color: var(--gris-texto); font-size: 14px; line-height: 1.7; }
-        .service-detalle ul li { margin-bottom: 5px; }
-        .service-detalle .btn-mini { display: inline-block; font-size: 13px; font-weight: bold; color: var(--blanco); background-color: #25d366; padding: 10px 20px; border-radius: 4px; text-decoration: none; transition: background 0.2s; text-align: center; width: 100%; box-sizing: border-box; }
-        .service-detalle .btn-mini:hover { background-color: #1da851; }
+        .service-detalle { 
+            max-height: 0; 
+            overflow: hidden; 
+            opacity: 0; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .service-card.abierto .service-detalle { 
+            max-height: 380px; 
+            opacity: 1; 
+            margin-top: 16px; 
+        }
+        .service-detalle-inner { 
+            border-top: 2px dashed #d5dde3; 
+            padding-top: 16px; 
+        }
+        .service-detalle ul { 
+            margin: 0 0 16px 0; 
+            padding-left: 20px; 
+            color: var(--gris-texto); 
+            font-size: 14px; 
+            line-height: 1.8;
+            list-style: none;
+        }
+        .service-detalle ul li { 
+            margin-bottom: 8px;
+        }
+        .service-detalle ul li::before {
+            content: '✓ ';
+            color: var(--acento);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        .service-detalle .btn-mini { 
+            display: block; 
+            font-size: 13px; 
+            font-weight: bold; 
+            color: var(--blanco); 
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+            padding: 12px 20px; 
+            border-radius: 6px; 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            text-align: center; 
+            width: 100%; 
+            box-sizing: border-box;
+            border: none;
+            cursor: pointer;
+        }
+        .service-detalle .btn-mini:hover { 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(37, 211, 102, 0.4);
+        }
+
+        /* --- NUEVA SECCIÓN DE PROYECTOS (GALERÍA HORIZONTAL SCROLLEABLE) --- */
+        #proyectos-reales { background-color: var(--blanco); }
+        
+        .proyectos-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .galeria-grid {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+        
+        .galeria-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .galeria-grid::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .galeria-grid::-webkit-scrollbar-thumb {
+            background: var(--primario);
+            border-radius: 10px;
+        }
+        
+        .galeria-grid::-webkit-scrollbar-thumb:hover {
+            background: var(--acento);
+        }
+        
+        .galeria-item {
+            flex: 0 0 auto;
+            width: 240px;
+            height: 220px;
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.35s ease;
+        }
+        
+        .galeria-item:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .galeria-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        
+        .galeria-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .galeria-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 76, 129, 0.88);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--blanco);
+            font-weight: bold;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .galeria-item:hover .galeria-overlay { opacity: 1; }
+        
+        /* Botones de scroll horizontal */
+        .scroll-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--acento);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+        }
+        
+        .scroll-btn:hover {
+            background: var(--acento-claro);
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 6px 18px rgba(255, 87, 34, 0.5);
+        }
+        
+        .scroll-btn-left {
+            left: -25px;
+        }
+        
+        .scroll-btn-right {
+            right: -25px;
+        }
+
+        /* --- EFECTO VISUAL FLOATING (LIGHTBOX PARA IMÁGENES) --- */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            backdrop-filter: blur(4px);
+        }
+        
+        .lightbox.activo {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox img {
+            max-width: 85%;
+            max-height: 80vh;
+            border-radius: 8px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            animation: zoomIn 0.4s ease;
+        }
+        
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
 
         /* --- PROPUESTA DE VALOR --- */
-        #propuesta { background-color: var(--primario); color: var(--blanco); text-align: center; }
+        #propuesta {
+            background: linear-gradient(135deg, var(--primario) 0%, #0a3657 100%);
+            color: var(--blanco);
+            text-align: center;
+        }
         #propuesta .section-title { color: var(--blanco); }
-        .propuesta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto 0 auto; }
-        .propuesta-item { background: rgba(255,255,255,0.08); padding: 30px; border-radius: 6px; text-align: left; border-left: 4px solid var(--acento); transition: transform 0.3s; }
-        .propuesta-item:hover { transform: scale(1.02); background: rgba(255,255,255,0.12); }
-        .propuesta-item h3 { margin: 0 0 12px 0; font-size: 20px; color: #5dade2; }
-        .propuesta-item p { margin: 0; font-size: 14.5px; color: #e0e0e0; line-height: 1.6; }
+        #propuesta .section-title::after { background: linear-gradient(90deg, var(--acento), var(--acento-claro)); }
+        .propuesta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 28px;
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+        }
+        .propuesta-item {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 35px;
+            border-radius: 8px;
+            text-align: left;
+            border-left: 5px solid var(--acento);
+            transition: all 0.35s ease;
+            backdrop-filter: blur(10px);
+        }
+        .propuesta-item:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+        .propuesta-item h3 {
+            margin: 0 0 12px 0;
+            font-size: 20px;
+            color: var(--acento-claro);
+            font-weight: 700;
+        }
+        .propuesta-item p {
+            margin: 0;
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+        }
 
         /* --- PREGUNTAS FRECUENTES (FAQ) --- */
         #faq { background-color: var(--blanco); }
-        .faq-list { max-width: 850px; margin: 0 auto; }
-        .faq-item { border-bottom: 1px solid #e2e8ee; transition: background 0.2s; }
-        .faq-item:hover { background-color: #fcfdfe; }
-        .faq-pregunta { width: 100%; text-align: left; background: none; border: none; cursor: pointer; padding: 22px 15px; font-size: 17px; font-weight: 600; color: var(--oscuro); display: flex; justify-content: space-between; align-items: center; outline: none; }
-        .faq-pregunta .signo { color: var(--acento); font-size: 22px; font-weight: bold; transition: transform 0.3s ease; }
-        .faq-item.abierto .faq-pregunta .signo { transform: rotate(45deg); }
+        .faq-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            border-bottom: 2px solid #e8ecf0;
+            transition: all 0.3s ease;
+            margin-bottom: 12px;
+            background: var(--claro);
+            border-radius: 6px;
+        }
+        .faq-item:hover {
+            background-color: #f9fcfe;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        }
+        .faq-pregunta {
+            width: 100%;
+            text-align: left;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 22px 20px;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--oscuro);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            transition: color 0.3s ease;
+        }
+        .faq-pregunta:hover { color: var(--acento); }
+        .faq-pregunta .signo {
+            color: var(--acento);
+            font-size: 22px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+        }
+        .faq-item.abierto .faq-pregunta .signo {
+            transform: rotate(45deg);
+        }
         
-        .faq-respuesta { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.35s ease; padding: 0 15px; }
-        .faq-item.abierto .faq-respuesta { max-height: 250px; opacity: 1; padding: 0 15px 22px 15px; }
-        .faq-respuesta p { margin: 0; color: var(--gris-texto); font-size: 15px; line-height: 1.6; text-align: justify; }
+        .faq-respuesta {
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.35s ease;
+            padding: 0 20px;
+        }
+        .faq-item.abierto .faq-respuesta {
+            max-height: 280px;
+            opacity: 1;
+            padding: 0 20px 22px 20px;
+        }
+        .faq-respuesta p {
+            margin: 0;
+            color: var(--gris-texto);
+            font-size: 15px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .faq-respuesta strong { color: var(--primario); }
 
         /* --- SECCIÓN CONTACTO COMERCIAL --- */
-        #contacto { background-color: var(--oscuro); color: var(--blanco); text-align: center; }
+        #contacto {
+            background: linear-gradient(135deg, var(--oscuro) 0%, #0a3657 100%);
+            color: var(--blanco);
+            text-align: center;
+        }
         #contacto .section-title { color: var(--blanco); }
-        .phone-box { font-size: 34px; color: var(--acento); font-weight: bold; margin: 25px 0 12px 0; letter-spacing: 0.5px; }
-        .address-box { font-size: 17px; color: #ccc; margin-bottom: 15px; font-weight: 500; }
-        .map-link { display: inline-block; color: #5dade2; font-weight: bold; text-decoration: none; margin-bottom: 35px; font-size: 15px; transition: color 0.2s; }
-        .map-link:hover { color: #fff; text-decoration: underline; }
+        #contacto .section-title::after { background: linear-gradient(90deg, var(--acento), var(--acento-claro)); }
+        .phone-box {
+            font-size: 36px;
+            color: var(--acento);
+            font-weight: 800;
+            margin: 28px 0 16px 0;
+            letter-spacing: 0.5px;
+        }
+        .address-box {
+            font-size: 17px;
+            color: #ddd;
+            margin-bottom: 16px;
+            font-weight: 500;
+        }
+        .map-link {
+            display: inline-block;
+            color: var(--acento-claro);
+            font-weight: 700;
+            text-decoration: none;
+            margin-bottom: 35px;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            padding: 12px 20px;
+            border: 2px solid var(--acento-claro);
+            border-radius: 6px;
+        }
+        .map-link:hover {
+            color: var(--blanco);
+            background: var(--acento-claro);
+        }
 
+        /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            header { padding: 15px 20px; background-color: var(--oscuro); }
+            header { padding: 15px 20px; }
             .menu-toggle { display: flex; }
-            nav { position: fixed; top: 0; right: 0; height: 100vh; width: 250px; background-color: var(--oscuro); flex-direction: column; justify-content: center; gap: 15px; padding: 30px; transform: translateX(100%); transition: transform 0.35s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.3); }
+            nav {
+                position: fixed;
+                top: 60px;
+                right: 0;
+                height: calc(100vh - 60px);
+                width: 100%;
+                max-width: 280px;
+                background: var(--oscuro);
+                flex-direction: column;
+                justify-content: flex-start;
+                gap: 10px;
+                padding: 20px;
+                transform: translateX(100%);
+                transition: transform 0.35s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+                z-index: 999;
+                overflow-y: auto;
+            }
             nav.nav-abierto { transform: translateX(0); }
-            nav a { text-align: center; width: 100%; padding: 12px; font-size: 17px; }
-            .hero h1 { font-size: 32px; }
-            .hero .eslogan { font-size: 18px; }
-            .nosotros-container { grid-template-columns: 1fr; gap: 25px; }
+            nav a {
+                width: 100%;
+                text-align: center;
+                padding: 14px;
+                font-size: 14px;
+            }
+            .hero {
+                height: 85vh;
+                margin-top: 60px;
+            }
+            .hero h1 { font-size: 36px; }
+            .hero .eslogan { font-size: 20px; }
+            .hero p { font-size: 16px; }
+            .nosotros-container {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
             section { padding: 70px 20px; }
-            .phone-box { font-size: 26px; }
+            .section-title { font-size: 28px; }
+            .phone-box { font-size: 28px; }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .galeria-item {
+                width: 200px;
+                height: 180px;
+            }
+            .scroll-btn-left {
+                left: 0;
+            }
+            .scroll-btn-right {
+                right: 0;
+            }
+            .propuesta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo { font-size: 18px; }
+            .hero h1 { font-size: 26px; }
+            .hero .eslogan { font-size: 16px; }
+            .section-title { font-size: 24px; }
+            section { padding: 50px 15px; }
+            .phone-box { font-size: 24px; }
+            .btn-whatsapp { padding: 14px 24px; font-size: 14px; }
+            .galeria-item {
+                width: 180px;
+                height: 160px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- PANTALLA DE CARGA -->
+    <div id="preloader">
+        <div class="engranaje">⚙️</div>
+        <div class="preloader-text">JHT INGENIERÍA</div>
+    </div>
+
+    <!-- HEADER -->
     <header id="main-header">
         <div class="logo">JHT <span>INGENIERÍA</span></div>
         <nav id="nav-links">
             <a href="#inicio" class="active">Inicio</a>
             <a href="#nosotros">Nosotros</a>
             <a href="#servicios">Servicios</a>
+            <a href="#proyectos-reales">Trabajos</a>
             <a href="#propuesta">Valor</a>
-            <a href="#faq">Preguntas</a>
+            <a href="#faq">FAQs</a>
             <a href="#contacto">Contacto</a>
         </nav>
         <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú">
@@ -221,295 +993,450 @@
         </button>
     </header>
 
+    <!-- HERO -->
     <section id="inicio" class="hero">
         <div id="hero-media-wrapper" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:1;">
-            <img id="hero-media-target" class="hero-bg-media" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=80" alt="JHT">
+            <img id="hero-media-target" class="hero-bg-media" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80" alt="JHT CNC">
         </div>
-        <div class="hero-content">
+        <div class="hero-content" data-aos="zoom-in">
             <h1>JHT Ingeniería</h1>
             <div class="eslogan">"Precisión que impulsa la industria."</div>
             <p>Especialistas en soluciones integrales de ingeniería y metalmecánica avanzada.</p>
-            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20solicito%20una%20cotización." class="btn-whatsapp" target="_blank">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
+            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20solicito%20una%20cotización." class="btn-whatsapp" target="_blank" rel="noopener noreferrer">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
             <div class="scroll-hint" id="scroll-hint">▼ Descubre nuestros servicios calificados</div>
         </div>
     </section>
 
-    <!-- SECCIÓN NOSOTROS -->
+    <!-- NOSOTROS -->
     <section id="nosotros">
-        <h2 class="section-title">¿Quiénes Somos?</h2>
-        <p class="section-subtitle">Una organización dedicada al desarrollo industrial con amplia experiencia técnica y compromiso de calidad.</p>
+        <h2 class="section-title" data-aos="fade-up">¿Quiénes Somos?</h2>
+        <p class="section-subtitle" data-aos="fade-up">Una organización dedicada al desarrollo industrial con amplia experiencia técnica y compromiso de calidad.</p>
         <div class="nosotros-container">
-            <div class="nosotros-box">
-                <h3>Trayectoria y Enfoque técnico</h3>
+            <div class="nosotros-box" data-aos="fade-right">
+                <h3>🏭 Trayectoria y Enfoque Técnico</h3>
                 <p>JHT Ingeniería es una empresa especializada en brindar soluciones integrales dentro del rubro metalmecánico. Desarrollamos proyectos que abarcan el diseño detallado, la fabricación de estructuras robustas y el procesamiento avanzado de materiales metálicos.</p>
                 <p>Contamos con maquinaria moderna que garantiza una manufactura ágil y precisa en cada una de sus etapas productivas.</p>
             </div>
-            <div class="nosotros-box">
-                <h3>Misión y Visión</h3>
+            <div class="nosotros-box" data-aos="fade-left">
+                <h3>🎯 Misión y Visión</h3>
                 <p><strong>Misión:</strong> Proveer productos y servicios metalmecánicos de alta precisión superando las tolerancias exigidas, utilizando tecnología moderna y un equipo humano enfocado en la mejora continua.</p>
                 <p><strong>Visión:</strong> Ser el socio estratégico líder a nivel nacional en la fabricación de componentes industriales, reconocidos por nuestra innovación, puntualidad y estándares de ingeniería.</p>
             </div>
         </div>
         <div class="valores-grid">
-            <div class="valor-card">
-                <h4>Calidad Rigurosa</h4><p>Garantía estructural.</p>
-                <div class="valor-detalle">Aplicamos controles dimensionales estrictos e inspección de cordones de soldadura para asegurar acabados óptimos y resistencia estructural prolongada.</div><span class="toggle-icono">+</span>
+            <div class="valor-card" data-aos="flip-left">
+                <h4>✓ Calidad Rigurosa</h4>
+                <p>Garantía estructural.</p>
+                <div class="valor-detalle">Aplicamos controles dimensionales estrictos e inspección de cordones de soldadura para asegurar acabados óptimos y resistencia estructural prolongada.</div>
+                <span class="toggle-icono">+</span>
             </div>
-            <div class="valor-card">
-                <h4>Transparencia Comercial</h4><p>Ética profesional.</p>
-                <div class="valor-detalle">Desarrollamos presupuestos transparentes, detallando especificaciones de materiales, espesores y plazos reales de ejecución desde el primer día.</div><span class="toggle-icono">+</span>
+            <div class="valor-card" data-aos="flip-left" data-aos-delay="100">
+                <h4>✓ Transparencia Comercial</h4>
+                <p>Ética profesional.</p>
+                <div class="valor-detalle">Desarrollamos presupuestos transparentes, detallando especificaciones de materiales, espesores y plazos reales de ejecución desde el primer día.</div>
+                <span class="toggle-icono">+</span>
             </div>
-            <div class="valor-card">
-                <h4>Innovación Productiva</h4><p>Tecnología CNC.</p>
-                <div class="valor-detalle">Optimizamos los procesos de fabricación mediante sistemas automatizados y software de diseño CAD/CAM que minimizan el desperdicio de materia prima.</div><span class="toggle-icono">+</span>
+            <div class="valor-card" data-aos="flip-left" data-aos-delay="200">
+                <h4>✓ Innovación Productiva</h4>
+                <p>Tecnología CNC.</p>
+                <div class="valor-detalle">Optimizamos los procesos de fabricación mediante sistemas automatizados y software de diseño CAD/CAM que minimizan el desperdicio de materia prima.</div>
+                <span class="toggle-icono">+</span>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN SERVICIOS DETALLADOS -->
+    <!-- SERVICIOS -->
     <section id="servicios">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <p class="section-subtitle">Procesos de manufactura especializados con control numérico computarizado y personal calificado.</p>
+        <h2 class="section-title" data-aos="fade-up">Nuestros Servicios</h2>
+        <p class="section-subtitle" data-aos="fade-up">Procesos de manufactura especializados con control numérico computarizado y personal calificado.</p>
         <div class="services-grid">
-            
-            <!-- Servicio 1 -->
-            <div class="service-card">
-                <div class="media-box" id="s1-media"><img src="https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=500&q=80"></div>
+            <div class="service-card" data-aos="fade-up">
+                <div class="media-box" id="s1-media">
+                    <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=600&q=80" alt="Corte Láser CNC">
+                </div>
                 <div class="service-card-content">
-                    <h3>Corte Láser de Fibra CNC <span class="flecha">▼</span></h3>
+                    <h3>🔴 Corte Láser CNC <span class="flecha">▼</span></h3>
                     <p>Tecnología de última generación para cortes de altísima precisión en metales.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
-                            <li>Corte limpio desde 0.5 mm hasta 25 mm de espesor.</li>
-                            <li>Aplicable en acero al carbono, acero inoxidable, aluminio y latón.</li>
-                            <li>Aprovechamiento máximo de planchas mediante anidado óptimo (nesting).</li>
+                            <li>Corte limpio desde 0.5 mm hasta 25 mm de espesor</li>
+                            <li>Aplicable en acero, inoxidable, aluminio y latón</li>
+                            <li>Aprovechamiento máximo de planchas mediante anidado óptimo</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Corte%20Laser" class="btn-mini" target="_blank">Solicitar Corte Láser</a>
+                        <a href="https://wa.me/51913333927?text=Cotizar%20Corte%20Laser" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
 
-            <!-- Servicio 2 -->
-            <div class="service-card">
-                <div class="media-box" id="s2-media"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80"></div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="media-box" id="s2-media">
+                    <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80" alt="Plegado CNC">
+                </div>
                 <div class="service-card-content">
-                    <h3>Plegado CNC de Alta Precisión <span class="flecha">▼</span></h3>
-                    <p>Doblado industrial de chapas con ángulos perfectos y repetibilidad garantizada.</p>
+                    <h3>📐 Plegado CNC <span class="flecha">▼</span></h3>
+                    <p>Doblado industrial de chapas con ángulos perfectos y repetibilidad.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
-                            <li>Plegadoras de control numérico que aseguran dobleces simétricos.</li>
-                            <li>Capacidad para perfiles complejos y piezas de gran longitud.</li>
-                            <li>Evita deformaciones innecesarias en el material tratado.</li>
+                            <li>Plegadoras de control numérico de precisión</li>
+                            <li>Capacidad para perfiles complejos y gran longitud</li>
+                            <li>Evita deformaciones en el material</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Plegado%20CNC" class="btn-mini" target="_blank">Solicitar Plegado</a>
+                        <a href="https://wa.me/51913333927?text=Cotizar%20Plegado%20CNC" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
 
-            <!-- Servicio 3 -->
-            <div class="service-card">
-                <div class="media-box" id="s3-media"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80"></div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="media-box" id="s3-media">
+                    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=600&q=80" alt="Soldadura MIG/TIG">
+                </div>
                 <div class="service-card-content">
-                    <h3>Soldadura Homologada (MIG/TIG) <span class="flecha">▼</span></h3>
-                    <p>Uniones metálicas de alta resistencia con acabados limpios y profesionales.</p>
+                    <h3>🔗 Soldadura MIG/TIG <span class="flecha">▼</span></h3>
+                    <p>Uniones metálicas de alta resistencia y acabados profesionales.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
-                            <li>Procesos GMAW (MIG/MAG) y GTAW (TIG) según requerimiento.</li>
-                            <li>Soldadores calificados para estructuras sometidas a esfuerzos cargas.</li>
-                            <li>Limpieza interna y externa posterior para evitar focos de corrosión.</li>
+                            <li>Procesos GMAW (MIG/MAG) y GTAW (TIG)</li>
+                            <li>Soldadores calificados para altas cargas</li>
+                            <li>Limpieza y protección contra corrosión</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Soldadura" class="btn-mini" target="_blank">Solicitar Soldadura</a>
+                        <a href="https://wa.me/51913333927?text=Cotizar%20Soldadura" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
 
-            <!-- Servicio 4 -->
-            <div class="service-card">
-                <div class="media-box" id="s4-media"><img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=500&q=80"></div>
+            <div class="service-card" data-aos="fade-up">
+                <div class="media-box" id="s4-media">
+                    <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=600&q=80" alt="Fabricación de Estructuras">
+                </div>
                 <div class="service-card-content">
-                    <h3>Fabricación de Estructuras <span class="flecha">▼</span></h3>
-                    <p>Montajes mecánicos, naves industriales y soportes pesados a medida.</p>
+                    <h3>🏗️ Fabricación de Estructuras <span class="flecha">▼</span></h3>
+                    <p>Montajes mecánicos y naves industriales a medida.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
-                            <li>Fabricación de pórticos, techos parabólicos y vigas armadas.</li>
-                            <li>Aplicación de bases anticorrosivas y acabados de pintura epóxica.</li>
-                            <li>Diseño modular preparado para un montaje rápido en campo.</li>
+                            <li>Fabricación de pórticos y vigas armadas</li>
+                            <li>Acabados de pintura epóxica anticorrosiva</li>
+                            <li>Diseño modular para montaje rápido</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Estructuras" class="btn-mini" target="_blank">Solicitar Estructuras</a>
+                        <a href="https://wa.me/51913333927?text=Cotizar%20Estructuras" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
 
-            <!-- Servicio 5 -->
-            <div class="service-card">
-                <div class="media-box" id="s5-media"><img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80"></div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="media-box" id="s5-media">
+                    <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=600&q=80" alt="Diseño CAD 3D">
+                </div>
                 <div class="service-card-content">
-                    <h3>Planos CAD y Modelado 3D <span class="flecha">▼</span></h3>
+                    <h3>📋 Diseño CAD 3D <span class="flecha">▼</span></h3>
+                    <p>Planos mecánicos y modelado virtual profesional.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
-                            <li>Desarrollo de planos mecánicos y ensambles de ingeniería.</li>
-                            <li>Modelado virtual para detectar interferencias antes de fabricar.</li>
-                            <li>Conversión de ideas manuscritas o muestras a archivos digitales aptos para CNC.</li>
+                            <li>Desarrollo de planos y ensambles 3D</li>
+                            <li>Detección de interferencias virtuales</li>
+                            <li>Conversión de ideas a archivos CNC</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Diseño%20CAD" class="btn-mini" target="_blank">Solicitar Diseño CAD</a>
+                        <a href="https://wa.me/51913333927?text=Cotizar%20Diseño%20CAD" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
 
-            <!-- Servicio 6 -->
-            <div class="service-card">
-                <div class="media-box" id="s6-media"><img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=500&q=80"></div>
+            <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="media-box" id="s6-media">
+                    <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=600&q=80" alt="Mecanizado General">
+                </div>
                 <div class="service-card-content">
-                    <h3>Servicios de Mecanizado General <span class="flecha">▼</span></h3>
-                    <p>Fabricación y recuperación de piezas cilíndricas o prismáticas con tolerancias finas.</p>
+                    <h3>⚙️ Mecanizado General <span class="flecha">▼</span></h3>
+                    <p>Fabricación de piezas con tolerancias finas.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
-                            <li>Torneado, fresado y taladrado industrial.</li>
-                            <li>Mecanizado de ejes, bocinas, poleas y acoples especiales.</li>
-                            <li>Trabajos en aceros especiales bonificados, bronce, nylon y AISI 304.</li>
+                            <li>Torneado, fresado y taladrado industrial</li>
+                            <li>Mecanizado de ejes y acoples especiales</li>
+                            <li>Trabajos en aceros especiales y aleaciones</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Mecanizado" class="btn-mini" target="_blank">Solicitar Mecanizado</a>
+                        <a href="https://wa.me/51913333927?text=Cotizar%20Mecanizado" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- SECCIÓN PROPUESTA DE VALOR -->
+    <!-- GALERÍA DE PROYECTOS REALES (SCROLL HORIZONTAL) -->
+    <section id="proyectos-reales">
+        <h2 class="section-title" data-aos="fade-up">Trabajos Realizados a Clientes</h2>
+        <p class="section-subtitle" data-aos="fade-up">Portafolio fotográfico de piezas, cortes y proyectos estructurales fabricados en nuestro taller.</p>
+        
+        <div class="proyectos-wrapper">
+            <button class="scroll-btn scroll-btn-left" id="scroll-left" aria-label="Desplazar izquierda">❮</button>
+            <div class="galeria-grid" id="galeria-trabajos"></div>
+            <button class="scroll-btn scroll-btn-right" id="scroll-right" aria-label="Desplazar derecha">❯</button>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX PARA IMÁGENES -->
+    <div id="lightbox-visor" class="lightbox">
+        <button class="lightbox-close" id="lightbox-close">×</button>
+        <img id="lightbox-img" src="" alt="Proyecto JHT">
+    </div>
+
+    <!-- PROPUESTA DE VALOR -->
     <section id="propuesta">
-        <h2 class="section-title">Nuestra Propuesta de Valor</h2>
-        <p class="section-subtitle">¿Por qué confiar sus proyectos de ingeniería en nuestras manos?</p>
+        <h2 class="section-title" data-aos="fade-up">Nuestra Propuesta de Valor</h2>
+        <p class="section-subtitle section-subtitle-light" data-aos="fade-up">¿Por qué confiar sus proyectos en nuestras manos?</p>
         <div class="propuesta-grid">
-            <div class="propuesta-item">
-                <h3>Alta Precisión</h3>
-                <p>Nuestra maquinaria automatizada CNC reduce el margen de error humano a micras, garantizando encajes perfectos.</p>
+            <div class="propuesta-item" data-aos="fade-up">
+                <h3>🎯 Alta Precisión</h3>
+                <p>Maquinaria automatizada CNC que reduce errores a micras, garantizando encajes perfectos y tolerancias mínimas.</p>
             </div>
-            <div class="propuesta-item">
-                <h3>Puntualidad de Entrega</h3>
-                <p>Respetamos los cronogramas pactados porque entendemos que el tiempo de parada de una planta industrial genera pérdidas.</p>
+            <div class="propuesta-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>⏰ Puntualidad</h3>
+                <p>Respetamos cronogramas porque sabemos que el tiempo de parada industrial genera pérdidas significativas.</p>
             </div>
-            <div class="propuesta-item">
-                <h3>Soporte Técnico Especializado</h3>
-                <p>Acompañamos al cliente resolviendo dudas en diseño y recomendando mejores materiales para reducir costos sin perder resistencia.</p>
+            <div class="propuesta-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>👨‍🔧 Soporte Técnico</h3>
+                <p>Acompañamiento especializado en diseño, materiales y optimización de costos sin sacrificar resistencia.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN FAQ -->
+    <!-- FAQ -->
     <section id="faq">
-        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <h2 class="section-title" data-aos="fade-up">Preguntas Frecuentes</h2>
         <div class="faq-list">
-            <div class="faq-item">
-                <button class="faq-pregunta">¿En qué formatos debo enviar mis archivos para corte láser? <span class="signo">+</span></button>
+            <div class="faq-item" data-aos="fade-up">
+                <button class="faq-pregunta">
+                    ¿En qué formatos debo enviar mis archivos?
+                    <span class="signo">+</span>
+                </button>
                 <div class="faq-respuesta">
-                    <p>Para agilizar la cotización de servicios CNC, se recomienda enviar los archivos vectoriales en formato <strong>.DXF</strong> o <strong>.DWG</strong> (AutoCAD) a escala real 1:1. Si cuenta con modelados completos, aceptamos extensiones <strong>.STEP</strong> o <strong>.IGS</strong>.</p>
+                    <p>Recomendamos enviar archivos vectoriales en formato <strong>.DXF</strong> o <strong>.DWG</strong> (AutoCAD) a escala 1:1. También aceptamos <strong>.STEP</strong>, <strong>.IGS</strong> y modelos 3D completos para análisis virtual.</p>
                 </div>
             </div>
-            <div class="faq-item">
-                <button class="faq-pregunta">¿Realizan trabajos con despacho e instalaciones? <span class="signo">+</span></button>
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <button class="faq-pregunta">
+                    ¿Realizan despacho e instalación?
+                    <span class="signo">+</span>
+                </button>
                 <div class="faq-respuesta">
-                    <p>Sí, desarrollamos la fabricación en nuestro taller industrial y gestionamos la logística de transporte y el montaje correspondiente en la locación del cliente, cumpliendo con los protocolos de seguridad necesarios.</p>
+                    <p>Sí, manejamos fabricación en nuestro taller y gestionamos logística, transporte y montaje en el sitio del cliente, cumpliendo todos los protocolos de seguridad requeridos.</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <button class="faq-pregunta">
+                    ¿Cuál es el tiempo de respuesta para cotizaciones?
+                    <span class="signo">+</span>
+                </button>
+                <div class="faq-respuesta">
+                    <p>Nuestro equipo responde en <strong>24-48 horas hábiles</strong>. Para consultas urgentes, contáctenos vía WhatsApp y recibirá atención inmediata de nuestro equipo comercial.</p>
+                </div>
+            </div>
+            <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <button class="faq-pregunta">
+                    ¿Qué garantía ofrecen?
+                    <span class="signo">+</span>
+                </button>
+                <div class="faq-respuesta">
+                    <p>Garantizamos calidad estructural y exactitud dimensional según <strong>normas industriales</strong>. Cada proyecto incluye inspección final y certificados de calidad cuando sea requerido.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECCIÓN CONTACTO PÚBLICA -->
-    <section id="contacto">
+    <!-- CONTACTO -->
+    <section id="contacto" data-aos="fade-up">
         <h2 class="section-title">Contacto Comercial</h2>
-        <div class="phone-box">WhatsApp Central: +51 913 333 927</div>
-        <div class="address-box" id="target-direccion">Dirección: Av. Industrial 123, Callao, Lima - Perú</div>
-        <a href="https://maps.google.com" class="map-link" id="target-mapa" target="_blank">📍 Abrir ubicación en Google Maps</a>
-        <br>
-        <a href="https://wa.me/51913333927?text=Hola%20adjunto%20mis%20planos" class="btn-whatsapp" target="_blank">📥 ENVIAR PLANOS A COTIZACIÓN</a>
+        <div class="phone-box">
+            <a href="https://wa.me/51913333927" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                📱 +51 913 333 927
+            </a>
+        </div>
+        <div class="address-box" id="target-direccion">📍 Av. Industrial 123, Callao, Lima - Perú</div>
+        <a href="https://maps.google.com" class="map-link" id="target-mapa" target="_blank" rel="noopener noreferrer">🗺️ Ver en Google Maps</a>
+        <br><br>
+        <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20me%20interesa%20conocer%20más%20sobre%20sus%20servicios" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">💬 CONTACTAR VÍA WHATSAPP</a>
     </section>
+
+    <!-- LIBRERÍAS EXTERNAS -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- 1. CARGAR DATOS PERSISTENTES DESDE LOCALSTORAGE ---
-        if(localStorage.getItem('jht_direccion')) {
-            document.getElementById('target-direccion').textContent = "Dirección: " + localStorage.getItem('jht_direccion');
-        }
-        if(localStorage.getItem('jht_mapa')) {
-            document.getElementById('target-mapa').href = localStorage.getItem('jht_mapa');
-        }
+        document.addEventListener('DOMContentLoaded', () => {
+            // INICIALIZAR ANIMACIONES
+            AOS.init({ duration: 900, once: true, offset: 100 });
 
-        // Cargar contenidos multimedia guardados
-        const multimediaKeys = ['u-hero', 'u-s1', 'u-s2', 'u-s3', 'u-s4', 'u-s5', 'u-s6'];
-        multimediaKeys.forEach(key => {
-            const dataData = localStorage.getItem('jht_media_' + key);
-            if (dataData) {
-                const parsed = JSON.parse(dataData);
-                if (key === 'u-hero') {
-                    const contenedor = document.getElementById('hero-media-wrapper');
-                    contenedor.innerHTML = '';
-                    insertarElemento(parsed.tipo, parsed.base64, contenedor, 'hero-bg-media', 'hero-media-target');
-                } else {
-                    const idDestino = key.replace('u-', '') + '-media';
-                    const contenedor = document.getElementById(idDestino);
-                    if(contenedor) {
-                        contenedor.innerHTML = '';
-                        insertarElemento(parsed.tipo, parsed.base64, contenedor, '', '');
+            // PRELOADER
+            window.addEventListener('load', () => {
+                const preloader = document.getElementById('preloader');
+                setTimeout(() => {
+                    preloader.classList.add('oculto');
+                }, 800);
+            });
+
+            // GALERÍA DE PROYECTOS DESDE GITHUB
+            const galeriaContenedor = document.getElementById('galeria-trabajos');
+            const galeriaScroll = galeriaContenedor;
+            const owner = 'haglertr';
+            const repo = 'jht-ingenieria';
+            const carpeta = 'trabajos';
+
+            // Cargar archivos desde GitHub API
+            fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${carpeta}`)
+                .then(response => response.json())
+                .then(files => {
+                    // Filtrar solo imágenes
+                    const imagenes = files.filter(file =>
+                        /\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
+                    );
+
+                    if (imagenes.length === 0) {
+                        console.log('No hay imágenes en la carpeta trabajos. Usando imágenes de respaldo.');
+                        cargarImagenesRespaldo();
+                    } else {
+                        // Mostrar imágenes desde GitHub
+                        imagenes.forEach((img, index) => {
+                            crearItemGaleria(img.download_url, img.name, index);
+                        });
                     }
+                })
+                .catch(error => {
+                    console.log('Error al cargar desde GitHub, usando imágenes de respaldo:', error);
+                    cargarImagenesRespaldo();
+                });
+
+            function cargarImagenesRespaldo() {
+                const imagenesRespaldo = [
+                    'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=400&q=80',
+                    'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=400&q=80'
+                ];
+                
+                imagenesRespaldo.forEach((img, index) => {
+                    crearItemGaleria(img, `Proyecto ${index + 1}`, index);
+                });
+            }
+
+            function crearItemGaleria(imgUrl, nombre, index) {
+                const item = document.createElement('div');
+                item.className = 'galeria-item';
+                item.setAttribute('data-aos', 'fade-up');
+                
+                item.innerHTML = `
+                    <img src="${imgUrl}" alt="${nombre}" loading="lazy">
+                    <div class="galeria-overlay">
+                        <span>🔍 Ver Detalles</span>
+                        <span>${nombre}</span>
+                    </div>
+                `;
+                
+                galeriaContenedor.appendChild(item);
+                
+                // Click para lightbox
+                item.addEventListener('click', () => {
+                    document.getElementById('lightbox-img').src = imgUrl;
+                    document.getElementById('lightbox-visor').classList.add('activo');
+                });
+            }
+
+            // SCROLL HORIZONTAL BUTTONS
+            const scrollLeft = document.getElementById('scroll-left');
+            const scrollRight = document.getElementById('scroll-right');
+            
+            scrollLeft.addEventListener('click', () => {
+                galeriaScroll.scrollBy({
+                    left: -240,
+                    behavior: 'smooth'
+                });
+            });
+            
+            scrollRight.addEventListener('click', () => {
+                galeriaScroll.scrollBy({
+                    left: 240,
+                    behavior: 'smooth'
+                });
+            });
+
+            // LIGHTBOX CLOSE
+            document.getElementById('lightbox-close').addEventListener('click', () => {
+                document.getElementById('lightbox-visor').classList.remove('activo');
+            });
+            
+            document.getElementById('lightbox-visor').addEventListener('click', (e) => {
+                if(e.target.id === 'lightbox-visor') {
+                    document.getElementById('lightbox-visor').classList.remove('activo');
                 }
+            });
+
+            // STORAGE
+            if(localStorage.getItem('jht_direccion')) {
+                document.getElementById('target-direccion').textContent = '📍 ' + localStorage.getItem('jht_direccion');
             }
-        });
-
-        function insertarElemento(tipo, src, contenedor, clases, id) {
-            let el;
-            if (tipo.startsWith('video/')) {
-                el = document.createElement('video');
-                el.autoplay = true; el.loop = true; el.muted = true; el.playsInline = true;
-            } else {
-                el = document.createElement('img');
+            if(localStorage.getItem('jht_mapa')) {
+                document.getElementById('target-mapa').href = localStorage.getItem('jht_mapa');
             }
-            el.src = src;
-            if(clases) el.className = clases;
-            if(id) el.id = id;
-            contenedor.appendChild(el);
-        }
 
-        // --- 2. LOGICA DE INTERACCION DEL USUARIO ---
-        const header = document.getElementById('main-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) header.classList.add('header-activo');
-            else header.classList.remove('header-activo');
-        });
+            // HEADER SCROLL
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) header.classList.add('header-activo');
+                else header.classList.remove('header-activo');
+            });
 
-        const menuToggle = document.getElementById('menu-toggle');
-        const navLinks = document.getElementById('nav-links');
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('abierto');
-            navLinks.classList.toggle('nav-abierto');
-        });
+            // MENÚ MÓVIL
+            const menuToggle = document.getElementById('menu-toggle');
+            const navLinks = document.getElementById('nav-links');
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('abierto');
+                navLinks.classList.toggle('nav-abierto');
+            });
+            
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('abierto');
+                    navLinks.classList.remove('nav-abierto');
+                });
+            });
 
-        // Expandir tarjetas de Valores
-        document.querySelectorAll('.valor-card').forEach(card => {
-            card.addEventListener('click', () => card.classList.toggle('expandido'));
-        });
+            // VALORES
+            document.querySelectorAll('.valor-card').forEach(card => {
+                card.addEventListener('click', () => card.classList.toggle('expandido'));
+            });
 
-        // Expandir tarjetas de Servicios de forma fluida
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('click', (e) => {
-                // Evitar que colapse si da clic en el botón de whatsapp interno
-                if (e.target.classList.contains('btn-mini')) return;
-                card.classList.toggle('abierto');
+            // SERVICIOS
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    if (e.target.closest('.btn-mini')) return;
+                    card.classList.toggle('abierto');
+                });
+            });
+
+            // FAQ
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.querySelector('.faq-pregunta').addEventListener('click', () => {
+                    item.classList.toggle('abierto');
+                });
+            });
+
+            // SCROLL HINT
+            document.getElementById('scroll-hint').addEventListener('click', () => {
+                document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
             });
         });
-
-        // Acordeón de FAQs
-        document.querySelectorAll('.faq-item').forEach(item => {
-            item.querySelector('.faq-pregunta').addEventListener('click', () => {
-                item.classList.toggle('abierto');
-            });
-        });
-
-        // Botón indicador de scroll suave
-        document.getElementById('scroll-hint').addEventListener('click', () => {
-            document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
-        });
-    });
     </script>
 </body>
 </html>
