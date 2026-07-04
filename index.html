@@ -1,1 +1,560 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Laser Precision</title><link rel="stylesheet" href="css/style.css"></head><body><header><h1>LÁSER PRECISIÓN</h1><nav><a>Inicio</a><a>Servicios</a><a>Materiales</a><a>Proyectos</a><a>Contacto</a><a class="cta" href="https://wa.me/000000000">Cotizar Ahora</a></nav></header><section class="hero"><h2>Corte Láser de Fibra: Precisión Industrial</h2><p>Cortamos acero, inoxidable y aluminio.</p></section><section><h2>Nuestras Capacidades</h2><div class="cards"><div>⚡ Corte Láser</div><div>📐 Plegado CNC</div><div>🛠 Soldadura</div></div></section><footer>Reemplace teléfono, WhatsApp y mapa.</footer><script src="js/app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LÁSER PRECISIÓN | Corte Láser de Fibra y Metalmecánica</title>
+
+<meta name="description" content="Empresa especializada en Corte Láser CNC, Plegado, Soldadura y Fabricación Metalmecánica.">
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Montserrat',sans-serif;
+background:#111;
+color:#fff;
+
+}
+
+header{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:20px 8%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(12px);
+
+z-index:1000;
+
+}
+
+.logo{
+
+font-size:28px;
+font-weight:800;
+letter-spacing:2px;
+color:#FF6A00;
+
+}
+
+nav a{
+
+margin-left:30px;
+color:white;
+text-decoration:none;
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#FF6A00;
+
+}
+
+.btn{
+
+padding:12px 25px;
+background:#FF6A00;
+border-radius:40px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.hero{
+
+height:100vh;
+
+background:
+
+linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.75)),
+url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+
+align-items:center;
+
+padding:0 8%;
+
+}
+
+.hero-content{
+
+max-width:700px;
+
+}
+
+.hero h1{
+
+font-size:60px;
+margin-bottom:20px;
+line-height:1.1;
+
+}
+
+.hero p{
+
+font-size:20px;
+line-height:1.8;
+margin-bottom:40px;
+color:#ddd;
+
+}
+
+section{
+
+padding:100px 8%;
+
+}
+
+.title{
+
+font-size:42px;
+margin-bottom:60px;
+text-align:center;
+
+}
+
+.cards{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+background:#1E1E1E;
+
+padding:40px;
+
+border-radius:15px;
+
+transition:.4s;
+
+border-top:4px solid #FF6A00;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+}
+
+.card h3{
+
+margin:20px 0;
+
+}
+
+.materiales{
+
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+
+}
+
+.material{
+
+padding:20px 30px;
+background:#222;
+border-radius:50px;
+border:1px solid #444;
+
+}
+
+.contacto{
+
+text-align:center;
+
+background:#181818;
+
+}
+
+.telefono{
+
+font-size:38px;
+
+font-weight:bold;
+
+color:#FF6A00;
+
+margin:30px 0;
+
+}
+
+footer{
+
+background:#0d0d0d;
+
+padding:50px;
+
+text-align:center;
+
+color:#aaa;
+
+}
+
+.whatsapp{
+
+position:fixed;
+
+bottom:30px;
+
+right:30px;
+
+background:#25D366;
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:32px;
+
+text-decoration:none;
+
+color:white;
+
+box-shadow:0 0 20px rgba(0,0,0,.4);
+
+transition:.3s;
+
+}
+
+.whatsapp:hover{
+
+transform:scale(1.1);
+
+}
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+nav{
+
+display:none;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+
+LÁSER PRECISIÓN
+
+</div>
+
+<nav>
+
+<a href="#">Inicio</a>
+
+<a href="#servicios">Servicios</a>
+
+<a href="#materiales">Materiales</a>
+
+<a href="#proyectos">Proyectos</a>
+
+<a href="#contacto">Contacto</a>
+
+</nav>
+
+<a href="https://wa.me/51999999999" class="btn">
+
+Cotizar Ahora
+
+</a>
+
+</header>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+
+Corte Láser de Fibra para la Industria Moderna
+
+</h1>
+
+<p>
+
+Fabricación Metalmecánica • Corte CNC • Plegado • Soldadura • Producción Industrial de Alta Precisión.
+
+</p>
+
+<a href="https://wa.me/51999999999" class="btn">
+
+Contactar por WhatsApp
+
+</a>
+
+</div>
+
+</section>
+
+<section id="servicios">
+
+<h2 class="title">
+
+Nuestras Capacidades
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h2>⚡</h2>
+
+<h3>Corte Láser CNC</h3>
+
+<p>
+
+Alta precisión para acero carbono, inoxidable y aluminio.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📐</h2>
+
+<h3>Plegado CNC</h3>
+
+<p>
+
+Doblado de piezas industriales con máxima exactitud.
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🛠</h2>
+
+<h3>Soldadura Industrial</h3>
+
+<p>
+
+Fabricación y ensamble de estructuras metálicas.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="materiales">
+
+<h2 class="title">
+
+Materiales
+
+</h2>
+
+<div class="materiales">
+
+<div class="material">
+
+Acero Carbono
+
+</div>
+
+<div class="material">
+
+Acero Inoxidable
+
+</div>
+
+<div class="material">
+
+Aluminio
+
+</div>
+
+<div class="material">
+
+Cobre
+
+</div>
+
+<div class="material">
+
+Bronce
+
+</div>
+
+</div>
+
+</section>
+
+<section id="proyectos">
+
+<h2 class="title">
+
+¿Por qué elegirnos?
+
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>✔ Tecnología de Última Generación</h3>
+
+</div>
+
+<div class="card">
+
+<h3>✔ Personal Especializado</h3>
+
+</div>
+
+<div class="card">
+
+<h3>✔ Entregas Puntuales</h3>
+
+</div>
+
+<div class="card">
+
+<h3>✔ Calidad Certificada</h3>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="contacto" id="contacto">
+
+<h2 class="title">
+
+Cotiza tu Proyecto
+
+</h2>
+
+<p>
+
+Envíanos tus planos en PDF, DXF o DWG y recibe una respuesta rápida.
+
+</p>
+
+<div class="telefono">
+
+📞 +51 999 999 999
+
+</div>
+
+<a href="https://wa.me/51999999999" class="btn">
+
+Chatear con un Asesor
+
+</a>
+
+</section>
+
+<footer>
+
+<h3>LÁSER PRECISIÓN</h3>
+
+<br>
+
+<p>
+
+📍 Lima - Perú
+
+</p>
+
+<br>
+
+<p>
+
+Lunes a Viernes
+
+8:00 am - 6:00 pm
+
+</p>
+
+<br>
+
+<p>
+
+© 2026 Todos los derechos reservados.
+
+</p>
+
+</footer>
+
+<a class="whatsapp"
+
+href="https://wa.me/51999999999"
+
+target="_blank">
+
+💬
+
+</a>
+
+</body>
+</html>
