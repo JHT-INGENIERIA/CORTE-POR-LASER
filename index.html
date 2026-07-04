@@ -1,560 +1,727 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LÁSER PRECISIÓN | Corte Láser de Fibra y Metalmecánica</title>
-
-<meta name="description" content="Empresa especializada en Corte Láser CNC, Plegado, Soldadura y Fabricación Metalmecánica.">
-
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-scroll-behavior:smooth;
-}
-
-body{
-
-font-family:'Montserrat',sans-serif;
-background:#111;
-color:#fff;
-
-}
-
-header{
-
-position:fixed;
-top:0;
-left:0;
-width:100%;
-padding:20px 8%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-
-background:rgba(0,0,0,.65);
-backdrop-filter:blur(12px);
-
-z-index:1000;
-
-}
-
-.logo{
-
-font-size:28px;
-font-weight:800;
-letter-spacing:2px;
-color:#FF6A00;
-
-}
-
-nav a{
-
-margin-left:30px;
-color:white;
-text-decoration:none;
-transition:.3s;
-
-}
-
-nav a:hover{
-
-color:#FF6A00;
-
-}
-
-.btn{
-
-padding:12px 25px;
-background:#FF6A00;
-border-radius:40px;
-color:white;
-text-decoration:none;
-font-weight:bold;
-transition:.3s;
-
-}
-
-.btn:hover{
-
-transform:translateY(-3px);
-
-}
-
-.hero{
-
-height:100vh;
-
-background:
-
-linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.75)),
-url("https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1600&q=80");
-
-background-size:cover;
-background-position:center;
-
-display:flex;
-
-align-items:center;
-
-padding:0 8%;
-
-}
-
-.hero-content{
-
-max-width:700px;
-
-}
-
-.hero h1{
-
-font-size:60px;
-margin-bottom:20px;
-line-height:1.1;
-
-}
-
-.hero p{
-
-font-size:20px;
-line-height:1.8;
-margin-bottom:40px;
-color:#ddd;
-
-}
-
-section{
-
-padding:100px 8%;
-
-}
-
-.title{
-
-font-size:42px;
-margin-bottom:60px;
-text-align:center;
-
-}
-
-.cards{
-
-display:grid;
-
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-
-gap:30px;
-
-}
-
-.card{
-
-background:#1E1E1E;
-
-padding:40px;
-
-border-radius:15px;
-
-transition:.4s;
-
-border-top:4px solid #FF6A00;
-
-}
-
-.card:hover{
-
-transform:translateY(-10px);
-
-}
-
-.card h3{
-
-margin:20px 0;
-
-}
-
-.materiales{
-
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-
-}
-
-.material{
-
-padding:20px 30px;
-background:#222;
-border-radius:50px;
-border:1px solid #444;
-
-}
-
-.contacto{
-
-text-align:center;
-
-background:#181818;
-
-}
-
-.telefono{
-
-font-size:38px;
-
-font-weight:bold;
-
-color:#FF6A00;
-
-margin:30px 0;
-
-}
-
-footer{
-
-background:#0d0d0d;
-
-padding:50px;
-
-text-align:center;
-
-color:#aaa;
-
-}
-
-.whatsapp{
-
-position:fixed;
-
-bottom:30px;
-
-right:30px;
-
-background:#25D366;
-
-width:70px;
-
-height:70px;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:32px;
-
-text-decoration:none;
-
-color:white;
-
-box-shadow:0 0 20px rgba(0,0,0,.4);
-
-transition:.3s;
-
-}
-
-.whatsapp:hover{
-
-transform:scale(1.1);
-
-}
-
-@media(max-width:900px){
-
-.hero h1{
-
-font-size:42px;
-
-}
-
-nav{
-
-display:none;
-
-}
-
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JHT Ingeniería | Soluciones Metalmecánicas de Precisión</title>
+    <style>
+        /* --- VARIABLES DE COLORES CORPORATIVOS (ESTILO MAQSOFT) --- */
+        :root {
+            --primario: #0f4c81; /* Azul corporativo de ingeniería */
+            --acento: #ff5722; /* Naranja para detalles importantes */
+            --oscuro: #1b222c; /* Gris oscuro industrial */
+            --claro: #f4f7f9; /* Fondo gris claro limpio */
+            --blanco: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--claro);
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* --- MENÚ DE NAVEGACIÓN INTERACTIVO --- */
+        header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            padding: 25px 50px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s ease;
+            z-index: 1000;
+            background-color: transparent;
+        }
+
+        header.header-activo {
+            background-color: var(--oscuro);
+            padding: 15px 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            border-bottom: 3px solid var(--primario);
+        }
+
+        .logo {
+            color: var(--blanco);
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .logo span { color: var(--primario); }
+        header.header-activo .logo span { color: #5dade2; }
+
+        nav { display: flex; gap: 5px; }
+        nav a {
+            color: var(--blanco);
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: 4px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        nav a::after {
+            content: ''; position: absolute; bottom: 0; left: 50%; width: 0; height: 2px;
+            background-color: var(--acento); transition: all 0.3s ease; transform: translateX(-50%);
+        }
+        nav a:hover::after { width: 80%; }
+        nav a.active {
+            color: var(--blanco);
+            background-color: var(--primario);
+            box-shadow: 0 2px 10px rgba(15, 76, 129, 0.4);
+        }
+        nav a.active::after { width: 0; }
+
+        /* --- BOTÓN HAMBURGUESA (MÓVIL) --- */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+        .menu-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: var(--blanco);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        .menu-toggle.abierto span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
+        .menu-toggle.abierto span:nth-child(2) { opacity: 0; }
+        .menu-toggle.abierto span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
+
+        /* --- SECCIÓN HERO (INICIO) --- */
+        .hero {
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            color: var(--blanco);
+        }
+        .hero-bg-media {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(27, 34, 44, 0.85), rgba(27, 34, 44, 0.75)); z-index: 2;
+        }
+        .hero-content { position: relative; z-index: 3; max-width: 900px; padding: 0 20px; }
+        .hero h1 { font-size: 50px; margin-bottom: 10px; text-transform: uppercase; line-height: 1.2; }
+        .hero .eslogan { font-size: 22px; color: #5dade2; font-style: italic; margin-bottom: 25px; font-weight: 600; }
+        .hero p { font-size: 17px; margin-bottom: 20px; color: #ccc; line-height: 1.6; }
+        .scroll-hint {
+            margin-top: 25px; font-size: 13px; color: #aab7c4; letter-spacing: 1px;
+            text-transform: uppercase; cursor: pointer; animation: rebote 2s infinite;
+        }
+        @keyframes rebote { 0%,100% { transform: translateY(0); } 50% { transform: translateY(6px); } }
+
+        .btn-whatsapp {
+            background-color: #25d366; color: var(--blanco);
+            padding: 15px 35px; border-radius: 4px; font-size: 16px; font-weight: bold;
+            text-decoration: none; display: inline-block; transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); border: none; cursor: pointer;
+        }
+        .btn-whatsapp:hover { background-color: #1da851; transform: translateY(-2px); }
+
+        /* --- SECCIONES BASE --- */
+        section { padding: 100px 50px; box-sizing: border-box; }
+        .section-title { font-size: 32px; text-align: center; margin-bottom: 10px; color: var(--oscuro); text-transform: uppercase; }
+        .section-subtitle { text-align: center; color: #666; margin-bottom: 50px; font-size: 16px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* --- NOSOTROS (MISION, VISION, VALORES) --- */
+        #nosotros { background-color: var(--blanco); }
+        .nosotros-container { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 50px; }
+        .nosotros-box h3 { color: var(--primario); font-size: 22px; margin-bottom: 15px; border-left: 4px solid var(--acento); padding-left: 10px; }
+        .nosotros-box p { line-height: 1.6; color: #555; text-align: justify; }
+
+        .valores-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto 0 auto;
+        }
+        .valor-card {
+            background: var(--claro); padding: 20px; border-radius: 4px; text-align: center;
+            border-bottom: 3px solid var(--primario); cursor: pointer; transition: all 0.25s ease;
+            outline: none;
+        }
+        .valor-card:hover, .valor-card:focus-visible { background: #eaf1f7; transform: translateY(-3px); }
+        .valor-card h4 { margin: 0 0 8px 0; color: var(--oscuro); font-size: 16px; }
+        .valor-card p { margin: 0; font-size: 14px; color: #666; line-height: 1.4; }
+        .valor-detalle {
+            max-height: 0; overflow: hidden; opacity: 0; transition: all 0.3s ease;
+            font-size: 13px; color: var(--primario); text-align: left; margin-top: 0;
+        }
+        .valor-card.expandido .valor-detalle { max-height: 200px; opacity: 1; margin-top: 12px; padding-top: 12px; border-top: 1px dashed #cbd6de; }
+        .valor-card .toggle-icono { display: block; margin-top: 8px; font-size: 18px; color: var(--acento); transition: transform 0.3s ease; }
+        .valor-card.expandido .toggle-icono { transform: rotate(45deg); }
+
+        /* --- SERVICIOS (TARJETAS CLICKEABLES / ACORDEÓN) --- */
+        #servicios { background-color: var(--claro); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1200px; margin: 0 auto;
+        }
+        .service-card {
+            background-color: var(--blanco); border-radius: 6px; overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-top: 4px solid var(--primario);
+            transition: transform 0.3s, box-shadow 0.3s; cursor: pointer;
+        }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.12); }
+        .media-box { width: 100%; height: 200px; background-color: #ddd; overflow: hidden; position: relative; }
+        .service-card img, .service-card video { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .media-box::after {
+            content: '+ Ver detalles'; position: absolute; bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.65)); color: #fff; font-size: 12px;
+            text-align: right; padding: 30px 12px 8px 12px; text-transform: uppercase; letter-spacing: 0.5px;
+            opacity: 0; transition: opacity 0.3s ease; pointer-events: none;
+        }
+        .service-card:hover .media-box::after,
+        .service-card.abierto .media-box::after { opacity: 1; }
+        .service-card.abierto .media-box::after { content: '- Ocultar detalles'; }
+        .service-card-content { padding: 20px; }
+        .service-card-content h3 { margin: 0 0 10px 0; font-size: 18px; color: var(--oscuro); display: flex; justify-content: space-between; align-items: center; }
+        .service-card-content h3 .flecha { font-size: 14px; color: var(--acento); transition: transform 0.3s ease; }
+        .service-card.abierto .service-card-content h3 .flecha { transform: rotate(180deg); }
+        .service-card-content p { color: #666; font-size: 13.5px; line-height: 1.5; margin: 0; }
+
+        .service-detalle {
+            max-height: 0; overflow: hidden; opacity: 0; transition: max-height 0.4s ease, opacity 0.4s ease, margin 0.4s ease;
+        }
+        .service-card.abierto .service-detalle { max-height: 260px; opacity: 1; margin-top: 14px; }
+        .service-detalle-inner { border-top: 1px dashed #d5dde3; padding-top: 12px; }
+        .service-detalle ul { margin: 0; padding-left: 18px; color: #555; font-size: 13px; line-height: 1.7; }
+        .service-detalle .btn-mini {
+            display: inline-block; margin-top: 12px; font-size: 12.5px; font-weight: bold; color: var(--blanco);
+            background-color: #25d366; padding: 8px 16px; border-radius: 4px; text-decoration: none;
+        }
+
+        /* --- PROPUESTA DE VALOR --- */
+        #propuesta { background-color: var(--primario); color: var(--blanco); text-align: center; }
+        #propuesta .section-title { color: var(--blanco); }
+        .propuesta-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; max-width: 1200px; margin: 40px auto 0 auto;
+        }
+        .propuesta-item { background: rgba(255,255,255,0.1); padding: 25px; border-radius: 4px; text-align: left; }
+        .propuesta-item h3 { margin: 0 0 10px 0; font-size: 18px; color: #5dade2; }
+        .propuesta-item p { margin: 0; font-size: 14px; color: #e0e0e0; line-height: 1.5; }
+
+        /* --- PREGUNTAS FRECUENTES (ACORDEÓN) --- */
+        #faq { background-color: var(--blanco); }
+        .faq-list { max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid #e2e8ee; }
+        .faq-pregunta {
+            width: 100%; text-align: left; background: none; border: none; cursor: pointer;
+            padding: 18px 10px; font-size: 16px; font-weight: 600; color: var(--oscuro);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .faq-pregunta .signo { color: var(--acento); font-size: 20px; transition: transform 0.3s ease; }
+        .faq-item.abierto .faq-pregunta .signo { transform: rotate(45deg); }
+        .faq-respuesta { max-height: 0; overflow: hidden; opacity: 0; transition: all 0.35s ease; padding: 0 10px; }
+        .faq-item.abierto .faq-respuesta { max-height: 200px; opacity: 1; padding: 0 10px 18px 10px; }
+        .faq-respuesta p { margin: 0; color: #666; font-size: 14.5px; line-height: 1.6; }
+
+        /* --- CONTACTO --- */
+        #contacto { background-color: var(--oscuro); color: var(--blanco); text-align: center; }
+        #contacto .section-title { color: var(--blanco); }
+        .phone-box { font-size: 32px; color: var(--acento); font-weight: bold; margin: 20px 0 10px 0; }
+        
+        /* NUEVO: Contenedor de Dirección y Mapa */
+        .address-box { font-size: 16px; color: #ccc; margin-bottom: 15px; line-height: 1.4; }
+        .map-link { 
+            display: inline-block; color: #5dade2; font-weight: bold; text-decoration: none; 
+            margin-bottom: 30px; transition: color 0.3s;
+        }
+        .map-link:hover { color: #fff; text-decoration: underline; }
+
+        /* --- PANEL DE EDICIÓN LOCAL --- */
+        .admin-panel {
+            background-color: #222; color: #fff; padding: 25px; border: 2px dashed var(--acento); margin: 30px; border-radius: 8px; text-align: center;
+        }
+        .admin-flex { display: flex; flex-wrap: wrap; gap: 15px; justify-content: center; margin-top: 15px; }
+        .admin-box { background: #333; padding: 12px; border-radius: 4px; font-size: 12px; text-align: left; width: 220px; }
+        .admin-box label { display: block; margin-bottom: 6px; font-weight: bold; color: #ccc; }
+        .admin-box input[type="text"] { width: 100%; padding: 5px; background: #444; border: 1px solid #555; color: #fff; border-radius: 3px; font-size: 11px; }
+
+        /* Responsivo Móvil */
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; background-color: var(--oscuro); }
+            .menu-toggle { display: flex; }
+            nav {
+                position: fixed; top: 0; right: 0; height: 100vh; width: 240px;
+                background-color: var(--oscuro); flex-direction: column; justify-content: center;
+                gap: 10px; padding: 20px; transform: translateX(100%); transition: transform 0.35s ease;
+                box-shadow: -6px 0 20px rgba(0,0,0,0.3);
+            }
+            nav.nav-abierto { transform: translateX(0); }
+            nav a { text-align: center; }
+            .hero h1 { font-size: 30px; }
+            .nosotros-container { grid-template-columns: 1fr; }
+            section { padding: 60px 20px; }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="logo">
-
-LÁSER PRECISIÓN
-
-</div>
-
-<nav>
-
-<a href="#">Inicio</a>
-
-<a href="#servicios">Servicios</a>
-
-<a href="#materiales">Materiales</a>
-
-<a href="#proyectos">Proyectos</a>
-
-<a href="#contacto">Contacto</a>
-
-</nav>
-
-<a href="https://wa.me/51913333927" class="btn">
-
-Cotizar Ahora
-
-</a>
-
-</header>
-
-<section class="hero">
-
-<div class="hero-content">
-
-<h1>
-
-Corte Láser de Fibra para la Industria Moderna
-
-</h1>
-
-<p>
-
-Fabricación Metalmecánica • Corte CNC • Plegado • Soldadura • Producción Industrial de Alta Precisión.
-
-</p>
-
-<a href="https://wa.me/51913333927" class="btn">
-
-Contactar por WhatsApp
-
-</a>
-
-</div>
-
-</section>
-
-<section id="servicios">
-
-<h2 class="title">
-
-Nuestras Capacidades
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h2>⚡</h2>
-
-<h3>Corte Láser CNC</h3>
-
-<p>
-
-Alta precisión para acero carbono, inoxidable y aluminio.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>📐</h2>
-
-<h3>Plegado CNC</h3>
-
-<p>
-
-Doblado de piezas industriales con máxima exactitud.
-
-</p>
-
-</div>
-
-<div class="card">
-
-<h2>🛠</h2>
-
-<h3>Soldadura Industrial</h3>
-
-<p>
-
-Fabricación y ensamble de estructuras metálicas.
-
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="materiales">
-
-<h2 class="title">
-
-Materiales
-
-</h2>
-
-<div class="materiales">
-
-<div class="material">
-
-Acero Carbono
-
-</div>
-
-<div class="material">
-
-Acero Inoxidable
-
-</div>
-
-<div class="material">
-
-Aluminio
-
-</div>
-
-<div class="material">
-
-Cobre
-
-</div>
-
-<div class="material">
-
-Bronce
-
-</div>
-
-</div>
-
-</section>
-
-<section id="proyectos">
-
-<h2 class="title">
-
-¿Por qué elegirnos?
-
-</h2>
-
-<div class="cards">
-
-<div class="card">
-
-<h3>✔ Tecnología de Última Generación</h3>
-
-</div>
-
-<div class="card">
-
-<h3>✔ Personal Especializado</h3>
-
-</div>
-
-<div class="card">
-
-<h3>✔ Entregas Puntuales</h3>
-
-</div>
-
-<div class="card">
-
-<h3>✔ Calidad Certificada</h3>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="contacto" id="contacto">
-
-<h2 class="title">
-
-Cotiza tu Proyecto
-
-</h2>
-
-<p>
-
-Envíanos tus planos en PDF, DXF o DWG y recibe una respuesta rápida.
-
-</p>
-
-<div class="telefono">
-
-📞 +51 913333927
-
-</div>
-
-<a href="https://wa.me/51913333927" class="btn">
-
-Chatear con un Asesor
-
-</a>
-
-</section>
-
-<footer>
-
-<h3>LÁSER PRECISIÓN</h3>
-
-<br>
-
-<p>
-
-📍 Lima - Perú
-
-</p>
-
-<br>
-
-<p>
-
-Lunes a Viernes
-
-8:00 am - 6:00 pm
-
-</p>
-
-<br>
-
-<p>
-
-© 2026 Todos los derechos reservados.
-
-</p>
-
-</footer>
-
-<a class="whatsapp"
-
-href="https://wa.me/51913333927"
-
-target="_blank">
-
-💬
-
-</a>
-
+    <!-- NAV BAR INTERACTIVO -->
+    <header id="main-header">
+        <div class="logo">JHT <span>INGENIERÍA</span></div>
+        <nav id="nav-links">
+            <a href="#inicio" class="active">Inicio</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#propuesta">Valor</a>
+            <a href="#faq">Preguntas</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <button class="menu-toggle" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </header>
+
+    <!-- SECCIÓN INICIO (HERO) -->
+    <section id="inicio" class="hero">
+        <img id="hero-media-target" class="hero-bg-media" src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=80" alt="JHT Ingenieria taller">
+        <div class="hero-content">
+            <h1>JHT Ingeniería</h1>
+            <div class="eslogan">"Precisión que impulsa la industria."</div>
+            <p>Especialistas en soluciones integrales de ingeniería y metalmecánica. Atendemos proyectos de alta exigencia para los sectores minero, energético, industrial, construcción, agroindustrial y manufacturero.</p>
+            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20deseo%20cotizar%20un%20proyecto." class="btn-whatsapp" target="_blank">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
+            <div class="scroll-hint" id="scroll-hint">▼ Descubre nuestros servicios</div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN NOSOTROS -->
+    <section id="nosotros">
+        <h2 class="section-title">¿Quiénes Somos?</h2>
+        <p class="section-subtitle">Una organización dedicada al desarrollo industrial con experiencia, eficiencia y precisión técnica.</p>
+
+        <div class="nosotros-container">
+            <div class="nosotros-box">
+                <h3>Trayectoria y Enfoque</h3>
+                <p>JHT Ingeniería es una empresa especializada en soluciones de ingeniería y metalmecánica, dedicada a la fabricación de estructuras metálicas, corte láser de fibra CNC, plegado, soldadura y mecanizado de precisión. Nuestro enfoque se basa en la mejora continua, la calidad de los procesos y el estricto cumplimiento de los plazos de entrega.</p>
+            </div>
+            <div class="nosotros-box">
+                <h3>Misión y Visión</h3>
+                <p><strong>Misión:</strong> Brindar soluciones integrales mediante tecnología moderna, personal altamente capacitado y altos estándares de calidad, precisión y seguridad.</p>
+                <p><strong>Visión:</strong> Ser una empresa líder a nivel nacional, reconocida por la excelencia y consolidada como un aliado estratégico para la industria minera, energética, manufacturera y de construcción.</p>
+            </div>
+        </div>
+
+        <h3 style="text-align:center; color: var(--oscuro); margin-top:40px;">NUESTROS VALORES CORPORATIVOS</h3>
+        <p style="text-align:center; color:#888; font-size:13px; margin-top:-6px;">Haz clic en cada valor para conocer cómo lo aplicamos</p>
+        <div class="valores-grid" id="valores-grid">
+            <div class="valor-card" tabindex="0" role="button" aria-expanded="false">
+                <h4>Calidad</h4>
+                <p>Excelencia en cada proyecto.</p>
+                <div class="valor-detalle">Aplicamos controles dimensionales y de acabado en cada pieza, verificando tolerancias antes de la entrega final al cliente.</div>
+                <span class="toggle-icono">+</span>
+            </div>
+            <div class="valor-card" tabindex="0" role="button" aria-expanded="false">
+                <h4>Integridad</h4>
+                <p>Ética, transparencia y responsabilidad.</p>
+                <div class="valor-detalle">Cotizamos con costos claros desde el inicio y comunicamos cualquier cambio de alcance antes de ejecutarlo.</div>
+                <span class="toggle-icono">+</span>
+            </div>
+            <div class="valor-card" tabindex="0" role="button" aria-expanded="false">
+                <h4>Innovación</h4>
+                <p>Nuevas tecnologías y procesos continuos.</p>
+                <div class="valor-detalle">Invertimos en tecnología CNC y capacitación constante para reducir tiempos de fabricación sin perder precisión.</div>
+                <span class="toggle-icono">+</span>
+            </div>
+            <div class="valor-card" tabindex="0" role="button" aria-expanded="false">
+                <h4>Compromiso</h4>
+                <p>Acuerdos con responsabilidad y puntualidad.</p>
+                <div class="valor-detalle">Definimos cronogramas realistas y hacemos seguimiento activo hasta la entrega conforme del proyecto.</div>
+                <span class="toggle-icono">+</span>
+            </div>
+            <div class="valor-card" tabindex="0" role="button" aria-expanded="false">
+                <h4>Seguridad</h4>
+                <p>Prioridad en nuestro personal y operaciones.</p>
+                <div class="valor-detalle">Trabajamos bajo protocolos de seguridad industrial en taller y campo, priorizando la integridad de nuestro equipo.</div>
+                <span class="toggle-icono">+</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN SERVICIOS -->
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <p class="section-subtitle">Capacidad técnica instalada y tecnología CNC avanzada para la manufactura de piezas y estructuras. Haz clic en cada tarjeta para ver el detalle técnico.</p>
+
+        <div class="services-grid" id="services-grid">
+            <div class="service-card" tabindex="0" role="button" aria-expanded="false">
+                <div class="media-box" id="s1-media"><img src="https://images.unsplash.com/photo-1563784462386-044fd95e9852?auto=format&fit=crop&w=500&q=80" alt="Corte láser CNC"></div>
+                <div class="service-card-content">
+                    <h3>Corte Láser de Fibra CNC <span class="flecha">▼</span></h3>
+                    <p>Tecnología CNC de alta potencia para un corte milimétrico y limpio en diversos metales y espesores.</p>
+                    <div class="service-detalle">
+                        <div class="service-detalle-inner">
+                            <ul>
+                                <li>Espesores desde 0.5 mm hasta 25 mm en acero al carbono.</li>
+                                <li>Compatible con acero inoxidable y aluminio.</li>
+                                <li>Corte de piezas complejas a partir de planos DXF/DWG.</li>
+                                <li>Acabado limpio, sin rebabas, listo para plegado o soldadura.</li>
+                            </ul>
+                            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20quiero%20cotizar%20corte%20láser%20CNC." class="btn-mini" target="_blank" onclick="event.stopPropagation()">Cotizar este servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" tabindex="0" role="button" aria-expanded="false">
+                <div class="media-box" id="s2-media"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80" alt="Plegado CNC"></div>
+                <div class="service-card-content">
+                    <h3>Plegado CNC <span class="flecha">▼</span></h3>
+                    <p>Doblado preciso de chapas metálicas mediante prensas hidráulicas programables.</p>
+                    <div class="service-detalle">
+                        <div class="service-detalle-inner">
+                            <ul>
+                                <li>Prensas hidráulicas con control numérico programable.</li>
+                                <li>Ángulos y radios de doblez repetibles pieza a pieza.</li>
+                                <li>Ideal para gabinetes, tolvas, soportes y carcasas.</li>
+                                <li>Capacidad para láminas de gran longitud.</li>
+                            </ul>
+                            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20quiero%20cotizar%20plegado%20CNC." class="btn-mini" target="_blank" onclick="event.stopPropagation()">Cotizar este servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" tabindex="0" role="button" aria-expanded="false">
+                <div class="media-box" id="s3-media"><img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=500&q=80" alt="Soldadura industrial"></div>
+                <div class="service-card-content">
+                    <h3>Soldadura MIG, TIG y SMAW <span class="flecha">▼</span></h3>
+                    <p>Procesos homologados de soldadura para uniones de alta resistencia estructural.</p>
+                    <div class="service-detalle">
+                        <div class="service-detalle-inner">
+                            <ul>
+                                <li>Soldadores certificados en procesos MIG, TIG y SMAW.</li>
+                                <li>Uniones estructurales para naves y soportes industriales.</li>
+                                <li>Trabajo en acero al carbono, inoxidable y aluminio.</li>
+                                <li>Inspección visual de cordones antes de entrega.</li>
+                            </ul>
+                            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20quiero%20cotizar%20soldadura%20industrial." class="btn-mini" target="_blank" onclick="event.stopPropagation()">Cotizar este servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" tabindex="0" role="button" aria-expanded="false">
+                <div class="media-box" id="s4-media"><img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?auto=format&fit=crop&w=500&q=80" alt="Fabricación de estructuras metálicas"></div>
+                <div class="service-card-content">
+                    <h3>Fabricación de Estructuras <span class="flecha">▼</span></h3>
+                    <p>Diseño y construcción de naves industriales, soportes y estructuras metálicas pesadas.</p>
+                    <div class="service-detalle">
+                        <div class="service-detalle-inner">
+                            <ul>
+                                <li>Estructuras para naves industriales y plantas de proceso.</li>
+                                <li>Soportería para tuberías y equipos.</li>
+                                <li>Fabricación bajo planos de ingeniería aprobados.</li>
+                                <li>Montaje en obra disponible.</li>
+                            </ul>
+                            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20quiero%20cotizar%20fabricación%20de%20estructuras." class="btn-mini" target="_blank" onclick="event.stopPropagation()">Cotizar este servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" tabindex="0" role="button" aria-expanded="false">
+                <div class="media-box" id="s5-media"><img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=500&q=80" alt="Planos CAD"></div>
+                <div class="service-card-content">
+                    <h3>Planos CAD y Modelado <span class="flecha">▼</span></h3>
+                    <p>Modelado y desarrollo de planos técnicos de ingeniería listos para producción.</p>
+                    <div class="service-detalle">
+                        <div class="service-detalle-inner">
+                            <ul>
+                                <li>Modelado 2D/3D a partir de bocetos o piezas de referencia.</li>
+                                <li>Planos de fabricación con tolerancias y despieces.</li>
+                                <li>Entrega en formatos DXF, DWG y PDF.</li>
+                                <li>Soporte técnico durante la etapa de diseño.</li>
+                            </ul>
+                            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20quiero%20cotizar%20planos%20CAD." class="btn-mini" target="_blank" onclick="event.stopPropagation()">Cotizar este servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-card" tabindex="0" role="button" aria-expanded="false">
+                <div class="media-box" id="s6-media"><img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0bc?auto=format&fit=crop&w=500&q=80" alt="Mecanizado de precisión"></div>
+                <div class="service-card-content">
+                    <h3>Servicios de Mecanizado <span class="flecha">▼</span></h3>
+                    <p>Desbaste, torneado y fresado de piezas mecánicas con acabados de alta tolerancia.</p>
+                    <div class="service-detalle">
+                        <div class="service-detalle-inner">
+                            <ul>
+                                <li>Torneado y fresado convencional y de precisión.</li>
+                                <li>Fabricación de repuestos y piezas a medida.</li>
+                                <li>Tolerancias ajustadas para ensambles críticos.</li>
+                                <li>Reparación de componentes mecánicos existentes.</li>
+                            </ul>
+                            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20quiero%20cotizar%20mecanizado%20de%20precisión." class="btn-mini" target="_blank" onclick="event.stopPropagation()">Cotizar este servicio</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PROPUESTA DE VALOR -->
+    <section id="propuesta">
+        <h2 class="section-title">Nuestra Propuesta de Valor</h2>
+        <p class="section-subtitle" style="color:#ddd;">¿Por qué las empresas líderes nos eligen como su socio estratégico?</p>
+
+        <div class="propuesta-grid">
+            <div class="propuesta-item"><h3>Alta Precisión</h3><p>Incorporamos tecnología CNC de última generación para asegurar la repetibilidad y fidelidad del diseño.</p></div>
+            <div class="propuesta-item"><h3>Eficiencia y Puntualidad</h3><p>Planificación rigurosa orientada a cumplir de forma estricta los plazos de entrega comprometidos.</p></div>
+            <div class="propuesta-item"><h3>Soporte de Ingeniería</h3><p>Atención y asesoría personalizada a cargo de ingenieros especialistas en manufactura metalmecánica.</p></div>
+            <div class="propuesta-item"><h3>Garantía de Calidad</h3><p>Ejecutamos un estricto control de calidad en cada una de las fases del proceso de fabricación.</p></div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN PREGUNTAS FRECUENTES -->
+    <section id="faq">
+        <h2 class="section-title">Preguntas Frecuentes</h2>
+        <p class="section-subtitle">Resolvemos las dudas más comunes antes de iniciar tu proyecto. Haz clic en cada pregunta.</p>
+        <div class="faq-list" id="faq-list">
+            <div class="faq-item">
+                <button class="faq-pregunta" aria-expanded="false">
+                    ¿Cómo solicito una cotización?
+                    <span class="signo">+</span>
+                </button>
+                <div class="faq-respuesta"><p>Envíanos tus planos o una descripción del proyecto por WhatsApp al +51 913 333 927 y te responderemos con una cotización técnica formal.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-pregunta" aria-expanded="false">
+                    ¿Qué formatos de planos aceptan?
+                    <span class="signo">+</span>
+                </button>
+                <div class="faq-respuesta"><p>Trabajamos con archivos DXF, DWG y PDF. Si no cuentas con planos, nuestro equipo puede apoyarte con el modelado inicial.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-pregunta" aria-expanded="false">
+                    ¿Atienden proyectos fuera de Lima?
+                    <span class="signo">+</span>
+                </button>
+                <div class="faq-respuesta"><p>Sí, coordinamos despacho y montaje en obra a nivel nacional según los requerimientos del proyecto.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-pregunta" aria-expanded="false">
+                    ¿Cuál es el tiempo de entrega promedio?
+                    <span class="signo">+</span>
+                </button>
+                <div class="faq-respuesta"><p>Depende de la complejidad y volumen del proyecto. Al cotizar, te indicamos un plazo estimado y confirmado antes de iniciar la fabricación.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN CONTACTO -->
+    <section id="contacto">
+        <h2 class="section-title">Contacto Comercial</h2>
+        <p>Envíanos los requerimientos de tu proyecto o planos CAD para elaborar una cotización técnica formal.</p>
+        <div class="phone-box">WhatsApp Central: +51 913 333 927</div>
+        
+        <!-- NUEVO: Textos dinámicos modificables desde el Admin Panel -->
+        <div class="address-box" id="target-direccion">Dirección: Av. Industrial 123, Callao, Lima - Perú</div>
+        <a href="https://maps.google.com" class="map-link" id="target-mapa" target="_blank">📍 Ver ubicación en Google Maps</a>
+        <br>
+        
+        <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingeniería,%20les%20escribo%20para%20enviarles%20un%20plano%20de%20cotización." class="btn-whatsapp" target="_blank">📥 ENVIAR PLANOS POR WHATSAPP</a>
+    </section>
+
+    <!-- PANEL DE ASIGNACIÓN MULTIMEDIA Y DATOS LOCAL -->
+    <div class="admin-panel">
+        <h3>Panel de Carga y Edición Local</h3>
+        <p style="font-size: 11px; color: #aaa; margin-top: -5px;">Modifica los textos informativos o añade fotos/videos de tu taller desde tu PC en tiempo real</p>
+        <div class="admin-flex">
+            <!-- NUEVOS INPUTS: Edición de Ubicación -->
+            <div class="admin-box">
+                <label>Editar Texto Dirección:</label>
+                <input type="text" id="edit-direccion" value="Av. Industrial 123, Callao, Lima - Perú">
+            </div>
+            <div class="admin-box">
+                <label>Editar Enlace Google Maps:</label>
+                <input type="text" id="edit-mapa" value="https://maps.google.com">
+            </div>
+
+            <!-- Multimedia Inputs -->
+            <div class="admin-box"><label>Fondo de Inicio (Hero):</label><input type="file" id="u-hero" accept="image/*,video/*"></div>
+            <div class="admin-box"><label>Servicio Corte Láser:</label><input type="file" id="u-s1" accept="image/*,video/*"></div>
+            <div class="admin-box"><label>Servicio Plegado:</label><input type="file" id="u-s2" accept="image/*,video/*"></div>
+            <div class="admin-box"><label>Servicio Soldadura:</label><input type="file" id="u-s3" accept="image/*,video/*"></div>
+            <div class="admin-box"><label>Servicio Estructuras:</label><input type="file" id="u-s4" accept="image/*,video/*"></div>
+            <div class="admin-box"><label>Servicio Planos CAD:</label><input type="file" id="u-s5" accept="image/*,video/*"></div>
+            <div class="admin-box"><label>Servicio Mecanizado:</label><input type="file" id="u-s6" accept="image/*,video/*"></div>
+        </div>
+    </div>
+
+    <!-- SCRIPT DE INTERACTIVIDAD COMPLETO -->
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+
+        // --- 1. MENÚ NAVEGACIÓN COMPORTAMIENTO SCROLL ---
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('header-activo');
+            } else {
+                header.classList.remove('header-activo');
+            }
+        });
+
+        // --- 2. MENÚ HAMBURGUESA (MÓVIL) ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            const estaAbierto = menuToggle.classList.toggle('abierto');
+            navLinks.classList.toggle('nav-abierto');
+            menuToggle.setAttribute('aria-expanded', estaAbierto);
+        });
+
+        const enlacesNav = document.querySelectorAll('#nav-links a');
+        enlacesNav.forEach(enlace => {
+            enlace.addEventListener('click', () => {
+                menuToggle.classList.remove('abierto');
+                navLinks.classList.remove('nav-abierto');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // --- 3. SCROLL HINT (BOTÓN HERO) ---
+        const scrollHint = document.getElementById('scroll-hint');
+        if (scrollHint) {
+            scrollHint.addEventListener('click', () => {
+                document.getElementById('nosotros').scrollIntoView({ behavior: 'smooth' });
+            });
+        }
+
+        // --- 4. SELECCIÓN ACTIVA DE ENLACES EN NAV ---
+        const secciones = document.querySelectorAll('section');
+        window.addEventListener('scroll', () => {
+            let actual = '';
+            secciones.forEach(seccion => {
+                const seccionTop = seccion.offsetTop;
+                if (window.scrollY >= (seccionTop - 150)) {
+                    actual = seccion.getAttribute('id');
+                }
+            });
+            enlacesNav.forEach(enlace => {
+                enlace.classList.remove('active');
+                if (enlace.getAttribute('href') === `#${actual}`) {
+                    enlace.classList.add('active');
+                }
+            });
+        });
+
+        // --- 5. ACORDEONES E INTERACTIVIDAD ---
+        // Valores
+        const tarjetasValores = document.querySelectorAll('.valor-card');
+        tarjetasValores.forEach(tarjeta => {
+            tarjeta.addEventListener('click', () => {
+                const expandido = tarjeta.classList.toggle('expandido');
+                tarjeta.setAttribute('aria-expanded', expandido);
+                tarjeta.querySelector('.toggle-icono').textContent = expandido ? '−' : '+';
+            });
+        });
+
+        // Servicios
+        const tarjetasServicios = document.querySelectorAll('.service-card');
+        tarjetasServicios.forEach(tarjeta => {
+            tarjeta.addEventListener('click', () => {
+                tarjeta.classList.toggle('abierto');
+            });
+        });
+
+        // FAQ
+        const itemsFaq = document.querySelectorAll('.faq-item');
+        itemsFaq.forEach(item => {
+            item.querySelector('.faq-pregunta').addEventListener('click', () => {
+                item.classList.toggle('abierto');
+            });
+        });
+
+        // --- 6. EDICIÓN EN TIEMPO REAL (DIRECCIÓN Y LINK MAPS) ---
+        const editDireccion = document.getElementById('edit-direccion');
+        const targetDireccion = document.getElementById('target-direccion');
+        const editMapa = document.getElementById('edit-mapa');
+        const targetMapa = document.getElementById('target-mapa');
+
+        editDireccion.addEventListener('input', (e) => {
+            targetDireccion.textContent = e.target.value ? `Dirección: ${e.target.value}` : '';
+        });
+
+        editMapa.addEventListener('input', (e) => {
+            targetMapa.href = e.target.value || '#';
+        });
+
+        // --- 7. PANEL DE CARGA MULTIMEDIA LOCAL ---
+        function procesarArchivoLocal(idInput, idContenedorDestino, esHero = false) {
+            const input = document.getElementById(idInput);
+            const destino = document.getElementById(idContenedorDestino);
+
+            if (!input || !destino) return;
+
+            input.addEventListener('change', function(e) {
+                const archivo = e.target.files[0];
+                if (!archivo) return;
+
+                const urlArchivo = URL.createObjectURL(archivo);
+                const tipo = archivo.type;
+
+                if (esHero) {
+                    const elementoAnterior = document.getElementById('hero-media-target');
+                    if (elementoAnterior) elementoAnterior.remove();
+                    crearEInsertarElemento(tipo, urlArchivo, destino, 'hero-bg-media', 'hero-media-target');
+                } else {
+                    destino.innerHTML = '';
+                    crearEInsertarElemento(tipo, urlArchivo, destino, '', '');
+                }
+            });
+        }
+
+        function crearEInsertarElemento(tipo, url, contenedorPadre, clases, id) {
+            let el;
+            if (tipo.startsWith('video/')) {
+                el = document.createElement('video');
+                el.autoplay = true; el.loop = true; el.muted = true; el.playsInline = true;
+            } else if (tipo.startsWith('image/')) {
+                el = document.createElement('img');
+                el.alt = "Multimedia cargado localmente";
+            }
+            if (el) {
+                el.src = url;
+                if (clases) el.className = clases;
+                if (id) el.id = id;
+                if (contenedorPadre.classList.contains('hero')) {
+                    contenedorPadre.insertBefore(el, contenedorPadre.firstChild);
+                } else {
+                    contenedorPadre.appendChild(el);
+                }
+            }
+        }
+
+        // Inicializar listeners multimedia para todos los contenedores
+        procesarArchivoLocal('u-hero', 'inicio', true);
+        procesarArchivoLocal('u-s1', 's1-media', false);
+        procesarArchivoLocal('u-s2', 's2-media', false);
+        procesarArchivoLocal('u-s3', 's3-media', false);
+        procesarArchivoLocal('u-s4', 's4-media', false);
+        procesarArchivoLocal('u-s5', 's5-media', false);
+        procesarArchivoLocal('u-s6', 's6-media', false);
+    });
+    </script>
 </body>
 </html>
