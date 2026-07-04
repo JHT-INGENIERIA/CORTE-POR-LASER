@@ -484,7 +484,7 @@
             transition: all 0.3s ease;
         }
         .service-card.abierto .media-box::after { 
-            content: '− OCULTAR'; 
+            content: '\2212 OCULTAR'; 
             background: linear-gradient(transparent, rgba(15, 76, 129, 0.9)); 
             opacity: 1;
         }
@@ -541,7 +541,7 @@
             margin-bottom: 8px;
         }
         .service-detalle ul li::before {
-            content: '✓ ';
+            content: '\2713 ';
             color: var(--acento);
             font-weight: bold;
             margin-right: 8px;
@@ -582,6 +582,7 @@
             gap: 20px;
             padding: 20px 0;
             scroll-behavior: smooth;
+            min-height: 60px;
         }
         
         .galeria-grid::-webkit-scrollbar {
@@ -612,6 +613,7 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
             cursor: pointer;
             transition: all 0.35s ease;
+            background-color: #e8ecf0;
         }
         
         .galeria-item:hover {
@@ -690,10 +692,31 @@
         
         .galeria-vacia {
             text-align: center;
-            padding: 40px;
+            padding: 40px 20px;
             color: var(--gris-claro);
             font-size: 16px;
+            width: 100%;
         }
+        .galeria-vacia .detalle-error {
+            display: block;
+            margin-top: 10px;
+            font-size: 12.5px;
+            color: #c0392b;
+            font-family: monospace;
+        }
+        .galeria-vacia .reintentar-btn {
+            display: inline-block;
+            margin-top: 16px;
+            background: var(--primario);
+            color: #fff;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 5px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .galeria-vacia .reintentar-btn:hover { background: var(--primario-claro); }
 
         /* --- EFECTO VISUAL FLOATING (LIGHTBOX PARA IMÁGENES) --- */
         .lightbox {
@@ -1080,7 +1103,7 @@
                     <img src="https://rgmetalshaping.com/wp-content/uploads/2023/05/MetalShaping023-768x512.jpg" alt="Plegado CNC">
                 </div>
                 <div class="service-card-content">
-                    <h3>📐 Plegado CNC <span class="flecha">▼</span></h3>
+                    <h3>📋 Plegado CNC <span class="flecha">▼</span></h3>
                     <p>Doblado industrial de chapas con ángulos perfectos y repetibilidad.</p>
                     <div class="service-detalle"><div class="service-detalle-inner">
                         <ul>
@@ -1278,72 +1301,134 @@
                 }, 800);
             });
 
-            // GALERÍA DE PROYECTOS DESDE GITHUB
+            // =====================================================================
+            // GALERÍA DE PROYECTOS DESDE GITHUB (VERSIÓN CORREGIDA Y ROBUSTA)
+            // =====================================================================
             const galeriaContenedor = document.getElementById('galeria-trabajos');
             const owner = 'haglertr';
             const repo = 'jht-ingenieria';
-            
-            let proyectosEncontrados = 0;
 
-            // Función para intentar cargar imágenes de Proyecto 1 a Proyecto 60
+            // Ramas a intentar, en orden. Tu repositorio usa "principal" como
+            // rama por defecto (se ve en la captura que enviaste), así que la
+            // probamos primero. Si algún día cambias el nombre de la rama,
+            // el código sigue funcionando porque también prueba "main" y "master".
+            const RAMAS_A_INTENTAR = ['principal', 'main', 'master'];
+
+            async function obtenerArchivosDelRepo() {
+                let ultimoError = '';
+                for (const rama of RAMAS_A_INTENTAR) {
+                    try {
+                        const url = `https://api.github.com/repos/${owner}/${repo}/contents/?ref=${encodeURIComponent(rama)}`;
+                        const respuesta = await fetch(url, {
+                            headers: { 'Accept': 'application/vnd.github.v3+json' }
+                        });
+
+                        if (respuesta.status === 403) {
+                            // Límite de peticiones de la API pública de GitHub (60/hora sin token)
+                            ultimoError = 'GitHub limitó las peticiones sin autenticación (403). Espera unos minutos o recarga más tarde.';
+                            continue;
+                        }
+                        if (respuesta.status === 404) {
+                            ultimoError = `No se encontró la rama "${rama}" en ${owner}/${repo}.`;
+                            continue;
+                        }
+                        if (!respuesta.ok) {
+                            ultimoError = `GitHub respondió con estado ${respuesta.status} en la rama "${rama}".`;
+                            continue;
+                        }
+
+                        const datos = await respuesta.json();
+                        if (Array.isArray(datos)) {
+                            return { archivos: datos, error: null };
+                        }
+                        ultimoError = 'La respuesta de GitHub no tuvo el formato esperado.';
+                    } catch (err) {
+                        ultimoError = err.message || 'Error de red al contactar a GitHub.';
+                    }
+                }
+                return { archivos: null, error: ultimoError };
+            }
+
             async function cargarProyectos() {
-                const urls = [
-                    `https://raw.githubusercontent.com/${owner}/${repo}/main/Proyecto%201.jpg`,
-                    `https://raw.githubusercontent.com/${owner}/${repo}/main/Proyecto%201.png`,
-                ];
+                const { archivos, error } = await obtenerArchivosDelRepo();
 
-                // Intentar cargar desde GitHub API para listar archivos
-                try {
-                    const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`);
-                    const files = await response.json();
-                    
-                    const proyectos = files.filter(file => 
-                        /^Proyecto\s\d+\.(jpg|jpeg|png|gif|webp)$/i.test(file.name)
-                    ).sort((a, b) => {
-                        const numA = parseInt(a.name.match(/\d+/)[0]);
-                        const numB = parseInt(b.name.match(/\d+/)[0]);
+                if (!archivos) {
+                    console.error('No se pudo cargar la galería desde GitHub:', error);
+                    mostrarVacio(error);
+                    return;
+                }
+
+                // Acepta "Proyecto 1.jpg", "Proyecto1.png", con o sin espacio,
+                // mayúsculas/minúsculas indistintas, y jpg/jpeg/png/gif/webp.
+                const proyectos = archivos
+                    .filter(archivo => archivo.type === 'file')
+                    .filter(archivo => /^proyecto\s*\d+\.(jpe?g|png|gif|webp)$/i.test(archivo.name))
+                    .sort((a, b) => {
+                        const numA = parseInt(a.name.match(/\d+/)[0], 10);
+                        const numB = parseInt(b.name.match(/\d+/)[0], 10);
                         return numA - numB;
                     });
 
-                    if (proyectos.length > 0) {
-                        proyectos.forEach(proyecto => {
-                            crearItemGaleria(proyecto.download_url, proyecto.name);
-                            proyectosEncontrados++;
-                        });
-                    } else {
-                        mostrarVacio();
-                    }
-                } catch (error) {
-                    console.log('No se pudieron cargar proyectos desde GitHub:', error);
-                    mostrarVacio();
+                if (proyectos.length === 0) {
+                    mostrarVacio('El repositorio respondió correctamente, pero no se encontró ningún archivo con el patrón "Proyecto 1.jpg", "Proyecto 2.jpeg", etc. en la raíz del repositorio.');
+                    return;
                 }
+
+                proyectos.forEach(proyecto => {
+                    crearItemGaleria(proyecto.download_url, proyecto.name);
+                });
             }
 
             function crearItemGaleria(imgUrl, nombre) {
                 const item = document.createElement('div');
                 item.className = 'galeria-item';
                 item.setAttribute('data-aos', 'fade-up');
-                
-                item.innerHTML = `
-                    <img src="${imgUrl}" alt="${nombre}" loading="lazy" onerror="this.style.display='none'">
-                    <div class="galeria-overlay">
-                        <span>🔍 Ver Detalles</span>
-                        <span>${nombre}</span>
-                    </div>
-                `;
-                
+
+                const img = document.createElement('img');
+                img.src = imgUrl;
+                img.alt = nombre;
+                img.loading = 'lazy';
+                // Si una imagen puntual falla en cargar (por ejemplo se borró o
+                // se renombró en GitHub), se retira solo esa tarjeta en vez de
+                // dejar un hueco roto en toda la galería.
+                img.addEventListener('error', () => item.remove());
+
+                const overlay = document.createElement('div');
+                overlay.className = 'galeria-overlay';
+                overlay.innerHTML = `<span>🔍 Ver Detalles</span><span>${nombre}</span>`;
+
+                item.appendChild(img);
+                item.appendChild(overlay);
                 galeriaContenedor.appendChild(item);
-                
-                // Click para lightbox
+
                 item.addEventListener('click', () => {
                     document.getElementById('lightbox-img').src = imgUrl;
                     document.getElementById('lightbox-visor').classList.add('activo');
                 });
             }
 
-            function mostrarVacio() {
-                galeriaContenedor.innerHTML = '<div class="galeria-vacia">No hay imágenes de proyectos disponibles en este momento.</div>';
+            function mostrarVacio(mensajeError) {
+                const detalle = mensajeError
+                    ? `<span class="detalle-error">${mensajeError}</span>`
+                    : '';
+                galeriaContenedor.innerHTML = `
+                    <div class="galeria-vacia">
+                        No se pudieron mostrar las imágenes de proyectos en este momento.
+                        ${detalle}
+                        <br>
+                        <button class="reintentar-btn" id="reintentar-galeria">Reintentar</button>
+                    </div>`;
+                const btnReintentar = document.getElementById('reintentar-galeria');
+                if (btnReintentar) {
+                    btnReintentar.addEventListener('click', () => {
+                        galeriaContenedor.innerHTML = '';
+                        cargarProyectos();
+                    });
+                }
             }
+            // =====================================================================
+            // FIN GALERÍA DE PROYECTOS
+            // =====================================================================
 
             // SCROLL HORIZONTAL BUTTONS
             const scrollLeft = document.getElementById('scroll-left');
