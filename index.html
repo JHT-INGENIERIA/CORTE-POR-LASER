@@ -1305,13 +1305,13 @@
             // GALERÍA DE PROYECTOS DESDE GITHUB (VERSIÓN CORREGIDA Y ROBUSTA)
             // =====================================================================
             const galeriaContenedor = document.getElementById('galeria-trabajos');
-            const owner = 'haglertr';
-            const repo = 'jht-ingenieria';
+            const owner = 'JHT-INGENIERIA';
+            const repo = 'jht-galeria-fotos';
 
-            // Ramas a intentar, en orden. Tu repositorio usa "principal" como
-            // rama por defecto (se ve en la captura que enviaste), así que la
-            // probamos primero. Si algún día cambias el nombre de la rama,
-            // el código sigue funcionando porque también prueba "main" y "master".
+            // Ramas a intentar, en orden. Según la captura del repositorio,
+            // la única rama que existe se llama "principal", así que la
+            // probamos primero. "main" y "master" quedan como respaldo por
+            // si en el futuro se agrega o cambia la rama por defecto.
             const RAMAS_A_INTENTAR = ['principal', 'main', 'master'];
 
             async function obtenerArchivosDelRepo() {
