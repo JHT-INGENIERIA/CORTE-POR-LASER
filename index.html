@@ -15,6 +15,32 @@
       "url": "https://jht-ingenieria.github.io/"
     }
     </script>
+
+    <!-- SEO LOCAL: DATOS ESTRUCTURADOS LOCALBUSINESS -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "JHT Ingeniería",
+      "url": "https://jht-ingenieria.github.io/",
+      "image": "https://jht-ingenieria.github.io/CORTE-POR-LASER/Logo.png",
+      "telephone": ["+51913333927", "+51994968109"],
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Quinta Av. Mz. E Lote 6B",
+        "addressLocality": "Lurigancho - Chosica",
+        "addressRegion": "Lima",
+        "postalCode": "15457",
+        "addressCountry": "PE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -12.006363,
+        "longitude": -76.919669
+      }
+    }
+    </script>
     <!-- ----------------------------- -->
 
 </head>
@@ -913,6 +939,10 @@
             margin: 28px 0 16px 0;
             letter-spacing: 0.5px;
         }
+        .phone-box-secundario {
+            font-size: 0.65em;
+            margin-top: -10px;
+        }
         .address-box {
             font-size: 17px;
             color: #ddd;
@@ -934,6 +964,274 @@
         .map-link:hover {
             color: var(--blanco);
             background: var(--acento-claro);
+        }
+
+        /* --- SECTORES / CLIENTES (PORTAFOLIO) --- */
+        #clientes { background-color: var(--claro); }
+        .sectores-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 26px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .sector-card {
+            background: var(--blanco);
+            border-radius: 10px;
+            padding: 40px 25px;
+            text-align: center;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+            border: 2px solid transparent;
+            transition: all 0.35s ease;
+        }
+        .sector-card:hover {
+            border-color: var(--acento);
+            transform: translateY(-6px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
+        }
+        .sector-logo {
+            width: 78px;
+            height: 78px;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--claro);
+            filter: grayscale(100%);
+            opacity: 0.75;
+            transition: all 0.35s ease;
+        }
+        .sector-card:hover .sector-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.08);
+        }
+        .sector-logo svg { width: 40px; height: 40px; }
+        .sector-card h4 {
+            margin: 0 0 10px 0;
+            font-size: 18px;
+            color: var(--oscuro);
+            font-weight: 700;
+        }
+        .sector-card p {
+            margin: 0;
+            font-size: 14px;
+            color: var(--gris-claro);
+            line-height: 1.6;
+        }
+
+        /* --- MAPA DE UBICACIÓN --- */
+        #mapa { background-color: var(--blanco); }
+        .mapa-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .mapa-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 45%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.12);
+            border: 4px solid var(--blanco);
+        }
+        .mapa-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+        .btn-mapa-cta {
+            display: inline-block;
+            margin-top: 30px;
+            background: linear-gradient(135deg, var(--primario) 0%, var(--primario-claro) 100%);
+            color: var(--blanco);
+            padding: 16px 42px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 15px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 6px 18px rgba(15, 76, 129, 0.35);
+            transition: all 0.3s ease;
+        }
+        .btn-mapa-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 26px rgba(15, 76, 129, 0.5);
+            background: linear-gradient(135deg, var(--primario-claro) 0%, var(--primario) 100%);
+        }
+
+        /* --- FOOTER CORPORATIVO --- */
+        footer {
+            background-color: var(--oscuro);
+            color: rgba(255, 255, 255, 0.85);
+            padding: 70px 50px 25px 50px;
+        }
+        .footer-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.3fr 1fr 1fr;
+            gap: 40px;
+        }
+        .footer-col h4 {
+            color: var(--blanco);
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 0 20px 0;
+            font-weight: 700;
+        }
+        .footer-col p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.65);
+            margin: 0 0 14px 0;
+        }
+        .footer-col ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-col ul li a:hover { color: var(--acento-claro); }
+        .footer-brand {
+            color: var(--blanco);
+            font-size: 20px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+        .footer-brand span { color: var(--acento); }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 50px auto 0 auto;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            text-align: center;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* --- MODAL SELECCIÓN DE ASESOR (WHATSAPP) --- */
+        .modal-asesores-overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: rgba(15, 23, 33, 0.75);
+            backdrop-filter: blur(4px);
+            z-index: 10001;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .modal-asesores-overlay.activo {
+            display: flex;
+            opacity: 1;
+        }
+        .modal-asesores {
+            background: var(--blanco);
+            border-radius: 12px;
+            padding: 36px 32px;
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: zoomIn 0.3s ease;
+        }
+        .modal-asesores h3 {
+            margin: 0 0 8px 0;
+            color: var(--oscuro);
+            font-size: 20px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .modal-asesores p.modal-sub {
+            margin: 0 0 26px 0;
+            color: var(--gris-claro);
+            font-size: 14px;
+        }
+        .modal-asesor-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            background: var(--claro);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 16px 18px;
+            margin-bottom: 14px;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            text-align: left;
+            box-sizing: border-box;
+        }
+        .modal-asesor-btn:hover {
+            border-color: #25d366;
+            background: #f0fbf4;
+            transform: translateY(-2px);
+        }
+        .modal-asesor-icono {
+            width: 44px;
+            height: 44px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: var(--blanco);
+        }
+        .modal-asesor-info { line-height: 1.4; }
+        .modal-asesor-info .nombre {
+            display: block;
+            font-weight: 700;
+            color: var(--oscuro);
+            font-size: 15px;
+        }
+        .modal-asesor-info .numero {
+            display: block;
+            font-size: 13.5px;
+            color: var(--gris-texto);
+        }
+        .modal-asesores-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: var(--claro);
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 18px;
+            color: var(--gris-texto);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .modal-asesores-close:hover {
+            background: var(--acento);
+            color: var(--blanco);
         }
 
         /* --- RESPONSIVE --- */
@@ -995,6 +1293,18 @@
             .propuesta-grid {
                 grid-template-columns: 1fr;
             }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 35px;
+                text-align: center;
+            }
+            .footer-col ul li a {
+                justify-content: center;
+            }
+            .mapa-embed {
+                padding-bottom: 75%;
+            }
+            footer { padding: 50px 25px 20px 25px; }
         }
         
         @media (max-width: 480px) {
@@ -1028,6 +1338,7 @@
             <a href="#nosotros">Nosotros</a>
             <a href="#servicios">Servicios</a>
             <a href="#proyectos-reales">Trabajos</a>
+            <a href="#clientes">Clientes</a>
             <a href="#propuesta">Valor</a>
             <a href="#faq">FAQs</a>
             <a href="#contacto">Contacto</a>
@@ -1046,7 +1357,7 @@
             <h1>JHT Ingeniería</h1>
             <div class="eslogan">"Precisión que impulsa la industria."</div>
             <p>Especialistas en soluciones integrales de ingeniería y metalmecánica avanzada.</p>
-            <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingenier%C3%ADa,%20solicito%20una%20cotizaci%C3%B3n." class="btn-whatsapp" target="_blank" rel="noopener noreferrer">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
+            <a href="#" class="btn-whatsapp js-whatsapp-picker" data-wa-msg="Hola%20JHT%20Ingenier%C3%ADa,%20solicito%20una%20cotizaci%C3%B3n.">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
             <div class="scroll-hint" id="scroll-hint">▼ Descubre nuestros servicios calificados</div>
         </div>
     </section>
@@ -1107,7 +1418,7 @@
                             <li>Aplicable en acero, inoxidable, aluminio y latón</li>
                             <li>Aprovechamiento máximo de planchas mediante anidado óptimo</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Corte%20Laser" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
+                        <a href="#" class="btn-mini js-whatsapp-picker" data-wa-msg="Cotizar%20Corte%20Laser">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
@@ -1125,7 +1436,7 @@
                             <li>Capacidad para perfiles complejos y gran longitud</li>
                             <li>Evita deformaciones en el material</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Plegado%20CNC" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
+                        <a href="#" class="btn-mini js-whatsapp-picker" data-wa-msg="Cotizar%20Plegado%20CNC">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
@@ -1143,7 +1454,7 @@
                             <li>Soldadores calificados para altas cargas</li>
                             <li>Limpieza y protección contra corrosión</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Soldadura" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
+                        <a href="#" class="btn-mini js-whatsapp-picker" data-wa-msg="Cotizar%20Soldadura">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
@@ -1161,7 +1472,7 @@
                             <li>Acabados de pintura epóxica anticorrosiva</li>
                             <li>Diseño modular para montaje rápido</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Estructuras" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
+                        <a href="#" class="btn-mini js-whatsapp-picker" data-wa-msg="Cotizar%20Estructuras">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
@@ -1179,7 +1490,7 @@
                             <li>Detección de interferencias virtuales</li>
                             <li>Conversión de ideas a archivos CNC</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Dise%C3%B1o%20CAD" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
+                        <a href="#" class="btn-mini js-whatsapp-picker" data-wa-msg="Cotizar%20Dise%C3%B1o%20CAD">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
@@ -1197,7 +1508,7 @@
                             <li>Mecanizado de ejes y acoples especiales</li>
                             <li>Trabajos en aceros especiales y aleaciones</li>
                         </ul>
-                        <a href="https://wa.me/51913333927?text=Cotizar%20Mecanizado" class="btn-mini" target="_blank" rel="noopener noreferrer">Solicitar Cotización</a>
+                        <a href="#" class="btn-mini js-whatsapp-picker" data-wa-msg="Cotizar%20Mecanizado">Solicitar Cotización</a>
                     </div></div>
                 </div>
             </div>
@@ -1221,6 +1532,89 @@
         <button class="lightbox-close" id="lightbox-close">×</button>
         <img id="lightbox-img" src="" alt="Proyecto JHT">
     </div>
+
+    <!-- MODAL SELECCIÓN DE ASESOR WHATSAPP -->
+    <div id="modal-asesores-overlay" class="modal-asesores-overlay">
+        <div class="modal-asesores">
+            <button class="modal-asesores-close" id="modal-asesores-close" aria-label="Cerrar">×</button>
+            <h3>¿Con quién deseas hablar?</h3>
+            <p class="modal-sub">Elige un asesor para continuar por WhatsApp</p>
+            <a href="#" id="modal-asesor-1" class="modal-asesor-btn" target="_blank" rel="noopener noreferrer">
+                <span class="modal-asesor-icono">💬</span>
+                <span class="modal-asesor-info">
+                    <span class="nombre">Asesor 1</span>
+                    <span class="numero">+51 994 968 109</span>
+                </span>
+            </a>
+            <a href="#" id="modal-asesor-2" class="modal-asesor-btn" target="_blank" rel="noopener noreferrer">
+                <span class="modal-asesor-icono">💬</span>
+                <span class="modal-asesor-info">
+                    <span class="nombre">Asesor 2</span>
+                    <span class="numero">+51 913 333 927</span>
+                </span>
+            </a>
+        </div>
+    </div>
+
+    <!-- SECTORES INDUSTRIALES ATENDIDOS -->
+    <section id="clientes">
+        <h2 class="section-title" data-aos="fade-up">Sectores que Confían en Nosotros</h2>
+        <p class="section-subtitle" data-aos="fade-up">Brindamos soluciones metalmecánicas a industrias con altos estándares de exigencia técnica y seguridad.</p>
+        <div class="sectores-grid">
+            <div class="sector-card" data-aos="fade-up">
+                <div class="sector-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0f4c81" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 20V10l8-6 8 6v10"/>
+                        <path d="M9 20v-6h6v6"/>
+                        <path d="M4 10h16"/>
+                    </svg>
+                </div>
+                <h4>Minería Peruana</h4>
+                <p>Componentes y estructuras metálicas para operaciones mineras exigentes.</p>
+            </div>
+            <div class="sector-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="sector-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0f4c81" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                    </svg>
+                </div>
+                <h4>Empresas de Ingeniería</h4>
+                <p>Fabricación de piezas y ensambles de precisión bajo planos técnicos.</p>
+            </div>
+            <div class="sector-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="sector-logo">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#0f4c81" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+                        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+                        <line x1="6" y1="1" x2="6" y2="4"/>
+                        <line x1="10" y1="1" x2="10" y2="4"/>
+                        <line x1="14" y1="1" x2="14" y2="4"/>
+                    </svg>
+                </div>
+                <h4>Empresas de Consumo de Alimentos</h4>
+                <p>Estructuras y equipos en acero inoxidable bajo normas de higiene alimentaria.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y MAPA INTERACTIVO -->
+    <section id="mapa">
+        <h2 class="section-title" data-aos="fade-up">Nuestra Ubicación</h2>
+        <p class="section-subtitle" data-aos="fade-up">Visítanos o ubícanos fácilmente en el mapa para coordinar la entrega de tus proyectos.</p>
+        <div class="mapa-wrapper" data-aos="fade-up">
+            <div class="mapa-embed">
+                <iframe
+                    src="https://maps.google.com/maps?q=-12.006363,-76.919669&z=16&ie=UTF8&iwloc=&output=embed"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación JHT Ingeniería">
+                </iframe>
+            </div>
+            <a href="https://maps.app.goo.gl/j2tdGkJc5uzozc7b8" class="btn-mapa-cta" target="_blank" rel="noopener noreferrer">📍 Cómo Llegar</a>
+        </div>
+    </section>
 
     <!-- PROPUESTA DE VALOR -->
     <section id="propuesta">
@@ -1293,11 +1687,48 @@
                 📱 +51 913 333 927
             </a>
         </div>
-        <div class="address-box" id="target-direccion">📍 Av. Industrial 123, Callao, Lima - Perú</div>
-        <a href="https://maps.google.com" class="map-link" id="target-mapa" target="_blank" rel="noopener noreferrer">🗺️ Ver en Google Maps</a>
+        <div class="phone-box phone-box-secundario">
+            <a href="https://wa.me/51994968109" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">
+                📱 +51 994 968 109
+            </a>
+        </div>
+        <div class="address-box" id="target-direccion">📍 Quinta Av. Mz.E lote 6B, Lurigancho - Chosica 15457, Lima - Perú</div>
+        <a href="https://maps.app.goo.gl/j2tdGkJc5uzozc7b8" class="map-link" id="target-mapa" target="_blank" rel="noopener noreferrer">🗺️ Ver en Google Maps</a>
         <br><br>
-        <a href="https://wa.me/51913333927?text=Hola%20JHT%20Ingenier%C3%ADa,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios" class="btn-whatsapp" target="_blank" rel="noopener noreferrer">💬 CONTACTAR VÍA WHATSAPP</a>
+        <a href="#" class="btn-whatsapp js-whatsapp-picker" data-wa-msg="Hola%20JHT%20Ingenier%C3%ADa,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios">💬 CONTACTAR VÍA WHATSAPP</a>
     </section>
+
+    <!-- FOOTER CORPORATIVO -->
+    <footer id="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">JHT <span>INGENIERÍA</span></div>
+                <p>Especialistas en soluciones integrales de ingeniería y metalmecánica de precisión: corte láser, plegado, soldadura, mecanizado CNC y fabricación de estructuras para los sectores minero, industrial y alimentario.</p>
+                <p>© <span id="footer-anio"></span> JHT Ingeniería. Todos los derechos reservados.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Enlaces</h4>
+                <ul>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos-reales">Trabajos</a></li>
+                    <li><a href="#clientes">Clientes</a></li>
+                    <li><a href="https://www.linkedin.com/company/jht-ingenieria" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="./terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                    <li><a href="./politica-de-privacidad.html">Política de Privacidad</a></li>
+                    <li><a href="./libro-de-reclamaciones.html">📖 Libro de Reclamaciones</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            Hecho en Lima, Perú — JHT Ingeniería S.A.C.
+        </div>
+    </footer>
 
     <!-- LIBRERÍAS EXTERNAS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -1528,8 +1959,41 @@
                 document.getElementById('servicios').scrollIntoView({ behavior: 'smooth' });
             });
 
+            // MODAL SELECCIÓN DE ASESOR (WHATSAPP)
+            const NUMERO_ASESOR_1 = '51994968109';
+            const NUMERO_ASESOR_2 = '51913333927';
+            const modalOverlay = document.getElementById('modal-asesores-overlay');
+            const modalAsesor1 = document.getElementById('modal-asesor-1');
+            const modalAsesor2 = document.getElementById('modal-asesor-2');
+            const modalClose = document.getElementById('modal-asesores-close');
+
+            document.querySelectorAll('.js-whatsapp-picker').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const msg = btn.getAttribute('data-wa-msg') || '';
+                    modalAsesor1.href = `https://wa.me/${NUMERO_ASESOR_1}?text=${msg}`;
+                    modalAsesor2.href = `https://wa.me/${NUMERO_ASESOR_2}?text=${msg}`;
+                    modalOverlay.classList.add('activo');
+                });
+            });
+
+            function cerrarModalAsesores() {
+                modalOverlay.classList.remove('activo');
+            }
+            modalClose.addEventListener('click', cerrarModalAsesores);
+            modalOverlay.addEventListener('click', (e) => {
+                if (e.target.id === 'modal-asesores-overlay') cerrarModalAsesores();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') cerrarModalAsesores();
+            });
+
             // Cargar proyectos
             cargarProyectos();
+
+            // AÑO DINÁMICO EN EL FOOTER
+            const footerAnio = document.getElementById('footer-anio');
+            if (footerAnio) footerAnio.textContent = new Date().getFullYear();
         });
     </script>
 </body>
