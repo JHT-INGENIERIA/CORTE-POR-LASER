@@ -260,6 +260,9 @@
             z-index: 1;
             animation: zoomSlow 20s ease-in-out infinite;
         }
+        /* El video de corte láser ya tiene movimiento propio: se desactiva el
+           zoom automático para que no compita visualmente con las chispas. */
+        video.hero-bg-media { animation: none; }
         @keyframes zoomSlow { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
         
         .hero::before {
@@ -1397,12 +1400,14 @@
     <!-- HERO -->
     <section id="inicio" class="hero">
         <div id="hero-media-wrapper" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:1;">
-            <img id="hero-media-target" class="hero-bg-media" src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80" alt="JHT CNC">
+            <video id="hero-media-target" class="hero-bg-media" autoplay muted loop playsinline preload="auto" poster="https://images.pexels.com/videos/31011799/maquina-de-corte-de-metal-31011799.jpeg?auto=compress&cs=tinysrgb&w=1920">
+                <source src="https://videos.pexels.com/video-files/31011799/13255131_1920_1080_30fps.mp4" type="video/mp4">
+            </video>
         </div>
         <div class="hero-content" data-aos="zoom-in">
-            <h1>JHT Ingeniería</h1>
-            <div class="eslogan">"Precisión que impulsa la industria."</div>
-            <p>Especialistas en soluciones integrales de ingeniería y metalmecánica avanzada.</p>
+            <h1>Corte Láser CNC de Precisión</h1>
+            <div class="eslogan">Equipo láser de alta potencia para metal, acero inoxidable y aluminio</div>
+            <p>Especialistas en corte láser, fabricación de estructuras metálicas y soluciones de ingeniería para los sectores minero, industrial y alimentario en Lima, Perú.</p>
             <a href="#" class="btn-whatsapp js-whatsapp-picker" data-wa-msg="Hola%20JHT%20Ingenier%C3%ADa,%20solicito%20una%20cotizaci%C3%B3n.">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
             <div class="scroll-hint" id="scroll-hint">▼ Descubre nuestros servicios calificados</div>
         </div>
@@ -1411,17 +1416,17 @@
     <!-- NOSOTROS -->
     <section id="nosotros">
         <h2 class="section-title" data-aos="fade-up">¿Quiénes Somos?</h2>
-        <p class="section-subtitle" data-aos="fade-up">Una organización dedicada al desarrollo industrial con amplia experiencia técnica y compromiso de calidad.</p>
+        <p class="section-subtitle" data-aos="fade-up">Una organización dedicada al desarrollo industrial con amplia experiencia en Cortes Por laser de diferentes medias y espesores siempre con el compromiso de calidad que nos caracterizan. </p>
         <div class="nosotros-container">
             <div class="nosotros-box" data-aos="fade-right">
                 <h3>🏭 Trayectoria y Enfoque Técnico</h3>
-                <p>JHT Ingeniería es una empresa especializada en brindar soluciones integrales dentro del rubro metalmecánico. Desarrollamos proyectos que abarcan el diseño detallado, la fabricación de estructuras robustas y el procesamiento avanzado de materiales metálicos.</p>
+                <p>JHT Ingeniería es una empresa especializada en brindar Costes Láser en diferentes medidas y espesores, contamos con equipo Técnico capacitado dentro del rubro metalmecánico.</p>
                 <p>Contamos con maquinaria moderna que garantiza una manufactura ágil y precisa en cada una de sus etapas productivas.</p>
             </div>
             <div class="nosotros-box" data-aos="fade-left">
                 <h3>🎯 Misión y Visión</h3>
-                <p><strong>Misión:</strong> Proveer productos y servicios metalmecánicos de alta precisión superando las tolerancias exigidas, utilizando tecnología moderna y un equipo humano enfocado en la mejora continua.</p>
-                <p><strong>Visión:</strong> Ser el socio estratégico líder a nivel nacional en la fabricación de componentes industriales, reconocidos por nuestra innovación, puntualidad y estándares de ingeniería.</p>
+                <p><strong>Misión:</strong> Proveer servicios metalmecánicos de alta precisión superando las tolerancias exigidas, utilizando tecnología moderna y un equipo humano enfocado en la mejora continua.</p>
+                <p><strong>Visión:</strong> Nos proyectamos para el 2030, Ser el socio estratégico líder a nivel nacional en la fabricación de componentes industriales, reconocidos por nuestra innovación, puntualidad y estándares de ingeniería.</p>
             </div>
         </div>
         <div class="valores-grid">
