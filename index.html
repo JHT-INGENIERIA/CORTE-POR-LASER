@@ -989,8 +989,7 @@
             letter-spacing: 0.5px;
         }
         .phone-box-secundario {
-            font-size: 0.65em;
-            margin-top: -10px;
+            margin-top: -6px;
         }
         .address-box {
             font-size: 17px;
@@ -1283,6 +1282,49 @@
             color: var(--blanco);
         }
 
+        /* --- BOTÓN FLOTANTE DE WHATSAPP (VISIBLE EN TODA LA PÁGINA) --- */
+        .whatsapp-flotante {
+            position: fixed;
+            bottom: 26px;
+            right: 26px;
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25d366 0%, #1da851 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+            z-index: 9000;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 30px;
+            animation: pulseWhatsapp 2.5s infinite;
+            transition: transform 0.25s ease;
+        }
+        .whatsapp-flotante:hover { transform: scale(1.1); }
+        @keyframes pulseWhatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        @media (max-width: 480px) {
+            .whatsapp-flotante {
+                width: 54px;
+                height: 54px;
+                bottom: 18px;
+                right: 18px;
+                font-size: 26px;
+            }
+        }
+
+        /* --- MAPA DENTRO DE LA SECCIÓN DE CONTACTO --- */
+        .contacto-mapa-embed {
+            max-width: 700px;
+            margin: 10px auto 30px auto;
+            padding-bottom: 40%;
+        }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
             header { padding: 15px 20px; }
@@ -1406,7 +1448,7 @@
         </div>
         <div class="hero-content" data-aos="zoom-in">
             <h1>Corte Láser CNC de Precisión</h1>
-            <div class="eslogan">Equipo láser de alta potencia para metal, acero inoxidable y aluminio</div>
+            <div class="eslogan">Fibra láser de alta potencia para metal, acero inoxidable y aluminio</div>
             <p>Especialistas en corte láser, fabricación de estructuras metálicas y soluciones de ingeniería para los sectores minero, industrial y alimentario en Lima, Perú.</p>
             <a href="#" class="btn-whatsapp js-whatsapp-picker" data-wa-msg="Hola%20JHT%20Ingenier%C3%ADa,%20solicito%20una%20cotizaci%C3%B3n.">💬 COTIZAR PROYECTO VÍA WHATSAPP</a>
             <div class="scroll-hint" id="scroll-hint">▼ Descubre nuestros servicios calificados</div>
@@ -1416,17 +1458,17 @@
     <!-- NOSOTROS -->
     <section id="nosotros">
         <h2 class="section-title" data-aos="fade-up">¿Quiénes Somos?</h2>
-        <p class="section-subtitle" data-aos="fade-up">Una organización dedicada al desarrollo industrial con amplia experiencia en Cortes Por laser de diferentes medias y espesores siempre con el compromiso de calidad que nos caracterizan. </p>
+        <p class="section-subtitle" data-aos="fade-up">Una organización dedicada al desarrollo industrial con amplia experiencia técnica y compromiso de calidad.</p>
         <div class="nosotros-container">
             <div class="nosotros-box" data-aos="fade-right">
                 <h3>🏭 Trayectoria y Enfoque Técnico</h3>
-                <p>JHT Ingeniería es una empresa especializada en brindar Costes Láser en diferentes medidas y espesores, contamos con equipo Técnico capacitado dentro del rubro metalmecánico.</p>
+                <p>JHT Ingeniería es una empresa especializada en brindar soluciones integrales dentro del rubro metalmecánico. Desarrollamos proyectos que abarcan el diseño detallado, la fabricación de estructuras robustas y el procesamiento avanzado de materiales metálicos.</p>
                 <p>Contamos con maquinaria moderna que garantiza una manufactura ágil y precisa en cada una de sus etapas productivas.</p>
             </div>
             <div class="nosotros-box" data-aos="fade-left">
                 <h3>🎯 Misión y Visión</h3>
-                <p><strong>Misión:</strong> Proveer servicios metalmecánicos de alta precisión superando las tolerancias exigidas, utilizando tecnología moderna y un equipo humano enfocado en la mejora continua.</p>
-                <p><strong>Visión:</strong> Nos proyectamos para el 2030, Ser el socio estratégico líder a nivel nacional en la fabricación de componentes industriales, reconocidos por nuestra innovación, puntualidad y estándares de ingeniería.</p>
+                <p><strong>Misión:</strong> Proveer productos y servicios metalmecánicos de alta precisión superando las tolerancias exigidas, utilizando tecnología moderna y un equipo humano enfocado en la mejora continua.</p>
+                <p><strong>Visión:</strong> Ser el socio estratégico líder a nivel nacional en la fabricación de componentes industriales, reconocidos por nuestra innovación, puntualidad y estándares de ingeniería.</p>
             </div>
         </div>
         <div class="valores-grid">
@@ -1744,6 +1786,15 @@
             </a>
         </div>
         <div class="address-box" id="target-direccion">📍 Quinta Av. Mz.E lote 6B, Lurigancho - Chosica 15457, Lima - Perú</div>
+        <div class="mapa-embed contacto-mapa-embed">
+            <iframe
+                src="https://maps.google.com/maps?q=-12.006363,-76.919669&z=16&ie=UTF8&iwloc=&output=embed"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa de ubicación JHT Ingeniería">
+            </iframe>
+        </div>
         <a href="https://maps.app.goo.gl/j2tdGkJc5uzozc7b8" class="map-link" id="target-mapa" target="_blank" rel="noopener noreferrer">🗺️ Ver en Google Maps</a>
         <br><br>
         <a href="#" class="btn-whatsapp js-whatsapp-picker" data-wa-msg="Hola%20JHT%20Ingenier%C3%ADa,%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20sus%20servicios">💬 CONTACTAR VÍA WHATSAPP</a>
@@ -1780,6 +1831,9 @@
             Hecho en Lima, Perú — JHT Ingeniería S.A.C.
         </div>
     </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP (VISIBLE EN TODA LA PÁGINA) -->
+    <a href="#" class="whatsapp-flotante js-whatsapp-picker" data-wa-msg="Hola%20JHT%20Ingenier%C3%ADa,%20quisiera%20m%C3%A1s%20informaci%C3%B3n." aria-label="Chatear por WhatsApp">💬</a>
 
     <!-- LIBRERÍAS EXTERNAS -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -1854,8 +1908,11 @@
                     return;
                 }
 
-                // Acepta "Proyecto 1.jpg", "Proyecto1.png", con o sin espacio,
+                // Acepta "Proyecto1.jpg", "Proyecto 2.jpeg", con o sin espacio,
                 // mayúsculas/minúsculas indistintas, y jpg/jpeg/png/gif/webp.
+                // Soporta hasta 60 fotos (Proyecto 1 ... Proyecto 60): si subes
+                // menos, solo se muestran las que realmente existen en el repo.
+                const LIMITE_MAXIMO_FOTOS = 60;
                 const proyectos = archivos
                     .filter(archivo => archivo.type === 'file')
                     .filter(archivo => /^proyecto\s*\d+\.(jpe?g|png|gif|webp)$/i.test(archivo.name))
@@ -1863,7 +1920,8 @@
                         const numA = parseInt(a.name.match(/\d+/)[0], 10);
                         const numB = parseInt(b.name.match(/\d+/)[0], 10);
                         return numA - numB;
-                    });
+                    })
+                    .slice(0, LIMITE_MAXIMO_FOTOS);
 
                 if (proyectos.length === 0) {
                     mostrarVacio('El repositorio respondió correctamente, pero no se encontró ningún archivo con el patrón "Proyecto 1.jpg", "Proyecto 2.jpeg", etc. en la raíz del repositorio.');
