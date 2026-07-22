@@ -2080,8 +2080,8 @@
                 btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     const msg = btn.getAttribute('data-wa-msg') || '';
-                    modalAsesor1.href = `https://wa.me/${NUMERO_ASESOR_1}?text=${msg}`;
-                    modalAsesor2.href = `https://wa.me/${NUMERO_ASESOR_2}?text=${msg}`;
+                    modalAsesor1.href = `https://api.whatsapp.com/send?phone=${NUMERO_ASESOR_1}&text=${msg}`;
+                    modalAsesor2.href = `https://api.whatsapp.com/send?phone=${NUMERO_ASESOR_2}&text=${msg}`;
                     modalOverlay.classList.add('activo');
                 });
             });
